@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 import static java.lang.System.exit;
@@ -17,7 +18,7 @@ public class EmplCompute {
     private String inputFile;
     private String outputFile;
     //private List<EmplPerson> emplPersons = new ArrayList<>();
-    private List<Departments> departments= new ArrayList<>();
+    private List<Departments> departments= new LinkedList<>();
 
     /**
      * Класс для хранения данных о департаментах
