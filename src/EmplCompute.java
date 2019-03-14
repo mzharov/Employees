@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import static java.lang.System.exit;
 
@@ -36,7 +38,7 @@ public class EmplCompute {
          */
         void addEmpl(EmplPerson empl) {
             emplPersons.add(empl);
-            computeAvgSalary();
+            //computeAvgSalary();
         }
         /**
          * Вычисление средней зарплаты по департаменты
@@ -56,7 +58,7 @@ public class EmplCompute {
 
         /**
          * Вычисление возможной средней зарплаты по департаменту при переводе сотрудника
-         * @param newEmplSalary зарплата сотрудника
+         * @param newEmplSalary зарплата сотрудника; при добавлении передается параметр  >0, при удалении  <0
          * @return средне значение зарплаты по департаменту
          */
         double computeTransactionAvgSalary(double newEmplSalary) {
@@ -83,7 +85,7 @@ public class EmplCompute {
 
         String lastName; //Фамилия
         double salary; //зарплата
-        int id; //Идентифкатор
+        int id; //Идентификатор
         EmplPerson(int id, String lastName, double salary) {
             this.id = id;
             this.lastName = lastName;
@@ -92,7 +94,7 @@ public class EmplCompute {
 
         @Override
         public String toString() {
-            return lastName + ";" + ";" + salary;
+            return lastName + ";"  + salary;
         }
 
     }
@@ -111,11 +113,6 @@ public class EmplCompute {
             String line = "";
             while ((line = br.readLine()) != null) {
                 String[] tmp = line.split(";");
-                /*
-                emplPersons.add(new EmplPerson(Integer.parseInt(tmp[0].trim()),
-                        tmp[1].trim(),
-                        Integer.parseInt(tmp[3].trim())));*/
-
                 /**
                  * Если объект для департамента уже создан, то нового сотрудника добавляем туда
                  */
@@ -141,8 +138,14 @@ public class EmplCompute {
                             tmp[1].trim(),
                             Integer.parseInt(tmp[3].trim())));
                     departments.add(dpt);
-
                 }
+            }
+            /**
+             * Считаем среднюю зарплату по департаментам
+             */
+            Iterator<Departments> iter = departments.iterator();
+            while (iter.hasNext()) {
+                iter.next().computeAvgSalary();
             }
         } catch (FileNotFoundException e) {
             System.out.println("Файл не найден.");
@@ -197,13 +200,11 @@ public class EmplCompute {
                         Departments deptsInner = deptIterInner.next();
                         if(!depts.name.equals(deptsInner.name)) {
                             if(emplPerson.salary > deptsInner.avgSalary) {
-                                tmpArray.add("id: " + emplPerson.id + ";"
-                                        + "name: " + emplPerson.lastName + ";"
-                                        + " new department: " + deptsInner.name + ";"
-                                        + " previous department: " + depts.name + ";"
-                                        + " new department average salary: "
+                                tmpArray.add(emplPerson.id + ";"
+                                        + emplPerson.lastName + ";"
+                                        + deptsInner.name + ";"
+                                        + depts.name + ";"
                                         + deptsInner.computeTransactionAvgSalary(emplPerson.salary) + ";"
-                                        + " previous department new average salary: "
                                         + depts.computeTransactionAvgSalary(-emplPerson.salary));
                             }
                         }
@@ -214,7 +215,10 @@ public class EmplCompute {
         //Если были найдены сотрудники, записываем полученный массив данных в выходной файл
         if(tmpArray.size() > 0) {
            try {
+               tmpArray.add(0, "//id;name;new department; previous department; " +
+                       "new department avg salary; previous department avg  salary");
                Files.write(Paths.get(outputFile), tmpArray, Charset.defaultCharset());
+               System.out.println("Данные успешно записаны в файл.");
            }
            catch (IOException e) {
                System.out.println("Ошибка в ходе записи в файл.");

@@ -1,4 +1,5 @@
-id: 0;name: Ivanov; new department: Cleaning; previous department: IT; new department average salary: 42666.666666666664; previous department new average salary: 93250.0
-id: 5;name: Lapyunov; new department: Cleaning; previous department: IT; new department average salary: 49000.0; previous department new average salary: 88500.0
-id: 5;name: Lapyunov; new department: HR; previous department: IT; new department average salary: 60000.0; previous department new average salary: 88500.0
-id: 6;name: Volkoff; new department: Cleaning; previous department: IT; new department average salary: 42666.666666666664; previous department new average salary: 93250.0
+//id;name;new department; previous department; new department avg salary; previous department avg  salary
+0;Ivanov;Cleaning;IT;42666.666666666664;93250.0
+5;Lapyunov;Cleaning;IT;49000.0;88500.0
+5;Lapyunov;HR;IT;60000.0;88500.0
+6;Volkoff;Cleaning;IT;42666.666666666664;93250.0
