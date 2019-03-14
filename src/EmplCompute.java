@@ -18,7 +18,7 @@ public class EmplCompute {
     private String inputFile;
     private String outputFile;
     //private List<EmplPerson> emplPersons = new ArrayList<>();
-    private List<Departments> departments= new LinkedList<>();
+    private List<Departments> departments = new LinkedList<>();
 
     /**
      * Класс для хранения данных о департаментах
@@ -26,7 +26,7 @@ public class EmplCompute {
     class Departments {
         String name;
         Double avgSalary;
-        ArrayList<EmplPerson> emplPersons = new ArrayList<>();
+        List<EmplPerson> emplPersons = new LinkedList<>();
 
         Departments(String name) {
             this.name = name;
