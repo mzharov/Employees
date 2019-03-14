@@ -154,8 +154,9 @@ public class EmplCompute {
             System.out.println("Ошибка в ходе чтения.");
             exit(-1);
         } catch (Exception e) {
-            System.out.println("Ошибка в ходе выполнения.");
+            System.out.println("Ошибка в ходе парсинга файла.");
             e.printStackTrace();
+            exit(-1);
         }
     }
 
