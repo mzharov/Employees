@@ -113,7 +113,7 @@ public class EmplCompute {
             String line = "";
             while ((line = br.readLine()) != null) {
                 String[] tmp = line.split(";");
-                /**
+                /*
                  * Если объект для департамента уже создан, то нового сотрудника добавляем туда
                  */
                 Iterator<Departments> iter = departments.iterator();
@@ -128,7 +128,7 @@ public class EmplCompute {
                         break;
                     }
                 }
-                /**
+                /*
                  * Если департамент встчечается в первый раз,
                  * создаем новый объект и добавляем сотрудника туда
                  */
@@ -140,7 +140,7 @@ public class EmplCompute {
                     departments.add(dpt);
                 }
             }
-            /**
+            /*
              * Считаем среднюю зарплату по департаментам
              */
             Iterator<Departments> iter = departments.iterator();
