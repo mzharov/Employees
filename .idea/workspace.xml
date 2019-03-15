@@ -3,11 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="5eccc9d3-6680-41ab-b96c-8898c89adc56" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Employees/EmplCompute.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Employees/EmplCompute.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Employees/Employees.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Employees/Employees.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Employees/out" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Employees/out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Departments.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Departments.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EmplCompute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EmplCompute.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EmplPerson.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EmplPerson.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Employees.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Employees.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/out" beforeDir="false" afterPath="$PROJECT_DIR$/src/out" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,8 +22,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Employees.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="10" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
+            <state relative-caret-position="119">
+              <caret line="10" column="77" selection-start-line="10" selection-start-column="77" selection-end-line="10" selection-end-column="77" />
             </state>
           </provider>
         </entry>
@@ -30,8 +31,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/EmplCompute.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="143" column="85" selection-start-line="143" selection-start-column="85" selection-end-line="143" selection-end-column="85" />
+            <state relative-caret-position="646">
+              <caret line="124" column="25" lean-forward="true" selection-start-line="124" selection-start-column="25" selection-end-line="124" selection-end-column="25" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -40,32 +41,25 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://C:/Program Files/Java/jdk-11.0.2/lib/src.zip!/java.base/java/math/BigDecimal.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="117">
-              <caret line="1721" selection-start-line="1721" selection-end-line="1721" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/EmplPerson.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
+            <state relative-caret-position="136">
               <caret line="14" column="29" lean-forward="true" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Departments.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="55" column="58" lean-forward="true" selection-start-line="55" selection-start-column="58" selection-end-line="55" selection-end-column="58" />
+            <state relative-caret-position="918">
+              <caret line="54" column="19" selection-start-line="54" selection-start-column="19" selection-end-line="54" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#770#771#0" expanded="true" />
                 <element signature="e#815#816#0" expanded="true" />
+                <element signature="e#1985#1986#0" expanded="true" />
+                <element signature="e#2025#2026#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -80,7 +74,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/out">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
@@ -116,10 +110,10 @@
         <option value="$PROJECT_DIR$/src/Organisation.java" />
         <option value="$PROJECT_DIR$/src/Department.java" />
         <option value="$PROJECT_DIR$/src/Employee.java" />
-        <option value="$PROJECT_DIR$/src/Employees.java" />
         <option value="$PROJECT_DIR$/src/EmplPerson.java" />
-        <option value="$PROJECT_DIR$/src/Departments.java" />
+        <option value="$PROJECT_DIR$/src/Employees.java" />
         <option value="$PROJECT_DIR$/src/EmplCompute.java" />
+        <option value="$PROJECT_DIR$/src/Departments.java" />
       </list>
     </option>
   </component>
@@ -163,7 +157,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552641669607" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552643481310" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -213,7 +207,7 @@
       <workItem from="1552488966547" duration="441000" />
       <workItem from="1552490206808" duration="10436000" />
       <workItem from="1552560242915" duration="2893000" />
-      <workItem from="1552572892586" duration="13099000" />
+      <workItem from="1552572892586" duration="14635000" />
     </task>
     <task id="LOCAL-00001" summary="Первая версия">
       <created>1552484645614</created>
@@ -271,11 +265,18 @@
       <option name="project" value="LOCAL" />
       <updated>1552637178470</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="double заменены на BigDecimal">
+      <created>1552641849114</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1552641849114</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48694000" />
+    <option name="totallyTimeSpent" value="50230000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -332,7 +333,8 @@
     <MESSAGE value="Небольшие исправления" />
     <MESSAGE value="Замена нек-х циклов на лямбда выражения" />
     <MESSAGE value="Nested классы вынесены из EmplCompute в отдельные" />
-    <option name="LAST_COMMIT_MESSAGE" value="Nested классы вынесены из EmplCompute в отдельные" />
+    <MESSAGE value="double заменены на BigDecimal" />
+    <option name="LAST_COMMIT_MESSAGE" value="double заменены на BigDecimal" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="editorHistoryManager">
@@ -420,27 +422,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Employees.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="10" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
+        <state relative-caret-position="119">
+          <caret line="10" column="77" selection-start-line="10" selection-start-column="77" selection-end-line="10" selection-end-column="77" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Departments.java">
+    <entry file="file://$PROJECT_DIR$/src/out">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="55" column="58" lean-forward="true" selection-start-line="55" selection-start-column="58" selection-end-line="55" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#770#771#0" expanded="true" />
-            <element signature="e#815#816#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="85">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/EmplCompute.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="143" column="85" selection-start-line="143" selection-start-column="85" selection-end-line="143" selection-end-column="85" />
+        <state relative-caret-position="646">
+          <caret line="124" column="25" lean-forward="true" selection-start-line="124" selection-start-column="25" selection-end-line="124" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -449,15 +446,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/EmplPerson.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
+        <state relative-caret-position="136">
           <caret line="14" column="29" lean-forward="true" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/out">
+    <entry file="file://$PROJECT_DIR$/src/Departments.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        <state relative-caret-position="918">
+          <caret line="54" column="19" selection-start-line="54" selection-start-column="19" selection-end-line="54" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#770#771#0" expanded="true" />
+            <element signature="e#815#816#0" expanded="true" />
+            <element signature="e#1985#1986#0" expanded="true" />
+            <element signature="e#2025#2026#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

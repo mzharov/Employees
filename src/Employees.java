@@ -1,5 +1,3 @@
-import static java.lang.System.exit;
-
 public class Employees {
 
     public static void main(String[] args) {
@@ -9,7 +7,6 @@ public class Employees {
         }
         else {
             System.out.println("Не были заданны необходимые входные параметры");
-            exit(-1);
         }
 
         EmplCompute empl = new EmplCompute(args[0], args[1]);

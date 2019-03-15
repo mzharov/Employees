@@ -11,8 +11,6 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import static java.lang.System.exit;
-
 
 public class EmplCompute {
 
@@ -67,21 +65,13 @@ public class EmplCompute {
                     departments.add(dpt);
                 }
             }
-            /*
-             * Считаем среднюю зарплату по департаментам
-             */
-            departments.forEach(n->n.computeAvgSalary());
-            //departments.forEach(Departments::computeAvgSalary);
         } catch (FileNotFoundException e) {
             System.out.println("Файл не найден.");
-            exit(-1);
         } catch (IOException e) {
             System.out.println("Ошибка в ходе чтения.");
-            exit(-1);
         } catch (Exception e) {
             System.out.println("Ошибка в ходе парсинга файла.");
             e.printStackTrace();
-            exit(-1);
         }
     }
 
@@ -127,8 +117,8 @@ public class EmplCompute {
                                         + emplPerson.getLastName() + ";"
                                         + deptsInner.getDptName() + ";"
                                         + depts.getDptName() + ";"
-                                        + deptsInner.computeTransactionAvgSalary(emplPerson.getSalary()) + ";"
-                                        + depts.computeTransactionAvgSalary(emplPerson.getSalary().negate()) + ";"
+                                        + deptsInner.getTAvgSalary(emplPerson.getSalary()) + ";"
+                                        + depts.getTAvgSalary(emplPerson.getSalary().negate()) + ";"
                                         + deptsInner.getAvgSalary() + ";"
                                         + depts.getAvgSalary());
                             }
@@ -149,11 +139,9 @@ public class EmplCompute {
            }
            catch (IOException e) {
                System.out.println("Ошибка в ходе записи в файл.");
-               exit(-1);
            }
            catch (Exception e) {
                System.out.println("Ошибка в ходе обработки записи данных в файл.");
-               exit(-1);
            }
         } else {
             System.out.println("Нет сотрудников удовлетворяющих условиям");
