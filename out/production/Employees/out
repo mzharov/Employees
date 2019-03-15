@@ -1,5 +1,5 @@
 //id;name;new department; previous department; new department avg salary; previous department avg  salary
 0;Ivanov;Cleaning;IT;42666.666666666664;93250.0
-5;Lapyunov;Cleaning;IT;49000.0;88500.0
-5;Lapyunov;HR;IT;60000.0;88500.0
-6;Volkoff;Cleaning;IT;42666.666666666664;93250.0
+5;Lyapunov;Cleaning;IT;49000.0;88500.0
+5;Lyapunov;HR;IT;60000.0;88500.0
+6;Volkov;Cleaning;IT;42666.666666666664;93250.0

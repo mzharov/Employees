@@ -20,78 +20,6 @@ public class EmplCompute {
     //private List<EmplPerson> emplPersons = new ArrayList<>();
     private List<Departments> departments = new LinkedList<>();
 
-    /**
-     * Класс для хранения данных о департаментах
-     */
-    class Departments {
-        String name;
-        Double avgSalary;
-        List<EmplPerson> emplPersons = new LinkedList<>();
-
-        Departments(String name) {
-            this.name = name;
-            avgSalary = 0.0;
-        }
-
-        /**
-         * Добавление нового сотрудика
-         * @param empl объект нового сотрудника
-         */
-        void addEmpl(EmplPerson empl) {
-            emplPersons.add(empl);
-        }
-        /**
-         * Вычисление средней зарплаты по департаменты
-         */
-        void computeAvgSalary() {
-            avgSalary = 0.0;
-            emplPersons.forEach((n-> avgSalary+=n.salary));
-            avgSalary /= emplPersons.size();
-        }
-        @Override
-        public String toString() {
-            return name + " " + avgSalary;
-        }
-
-        /**
-         * Вычисление возможной средней зарплаты по департаменту при переводе сотрудника
-         * @param newEmplSalary зарплата сотрудника; при добавлении передается параметр  >0, при удалении  <0
-         * @return средне значение зарплаты по департаменту
-         */
-        double computeTransactionAvgSalary(double newEmplSalary) {
-            double tAvgSalary = 0.0;
-            tAvgSalary = emplPersons.stream().mapToDouble(n->n.salary).sum();
-            tAvgSalary +=newEmplSalary;
-            if(newEmplSalary > 0) {
-                tAvgSalary /= emplPersons.size() + 1;
-            } else {
-                tAvgSalary /= emplPersons.size() - 1;
-            }
-            return tAvgSalary;
-        }
-
-    }
-
-    /**
-     * Хранение данных о сотрудника
-     */
-    class EmplPerson {
-
-        String lastName; //Фамилия
-        double salary; //зарплата
-        int id; //Идентификатор
-        EmplPerson(int id, String lastName, double salary) {
-            this.id = id;
-            this.lastName = lastName;
-            this.salary = salary;
-        }
-
-        @Override
-        public String toString() {
-            return lastName + ";"  + salary;
-        }
-
-    }
 
     EmplCompute(String inputFile, String outputFile) {
         this.inputFile = inputFile;
@@ -114,10 +42,12 @@ public class EmplCompute {
                 boolean hasDept = false;
                 while (iter.hasNext()) {
                     Departments dept = iter.next();
-                    if(dept.name.equals(tmp[2].trim())) {
+                    if(dept.getDptName().equals(tmp[2].trim())) {
                         dept.addEmpl(new EmplPerson(Integer.parseInt(tmp[0].trim()),
                                 tmp[1].trim(),
                                 Double.parseDouble(tmp[3].trim())));
+
+
                         hasDept = true;
                         break;
                     }
@@ -179,22 +109,22 @@ public class EmplCompute {
         while (deptIter.hasNext()) {
             Departments depts = deptIter.next();
             //Проходим по всем сотрудникам и сравниваем их зарплату с средней зарплатой по департаменту
-            Iterator<EmplPerson> emplsIter = depts.emplPersons.iterator();
+            Iterator<EmplPerson> emplsIter = depts.getEmployeersList().iterator();
             while (emplsIter.hasNext()) {
                 EmplPerson emplPerson = emplsIter.next();
                 //Если зарплата меньше среднего, то ищем департамент, где она больше среднего
-                if(emplPerson.salary < depts.avgSalary) {
+                if(emplPerson.getSalary() < depts.getAvgSalary()) {
                     Iterator<Departments> deptIterInner = departments.iterator();
                     while (deptIterInner.hasNext()) {
                         Departments deptsInner = deptIterInner.next();
-                        if(!depts.name.equals(deptsInner.name)) {
-                            if(emplPerson.salary > deptsInner.avgSalary) {
-                                tmpArray.add(emplPerson.id + ";"
-                                        + emplPerson.lastName + ";"
-                                        + deptsInner.name + ";"
-                                        + depts.name + ";"
-                                        + deptsInner.computeTransactionAvgSalary(emplPerson.salary) + ";"
-                                        + depts.computeTransactionAvgSalary(-emplPerson.salary));
+                        if(!depts.getDptName().equals(deptsInner.getDptName())) {
+                            if(emplPerson.getSalary() > deptsInner.getAvgSalary()) {
+                                tmpArray.add(emplPerson.getId() + ";"
+                                        + emplPerson.getSalary() + ";"
+                                        + deptsInner.getDptName() + ";"
+                                        + depts.getDptName() + ";"
+                                        + deptsInner.computeTransactionAvgSalary(emplPerson.getSalary()) + ";"
+                                        + depts.computeTransactionAvgSalary(-emplPerson.getSalary()));
                             }
                         }
                     }
