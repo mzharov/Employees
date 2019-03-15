@@ -14,6 +14,7 @@ public class Employees {
 
         EmplCompute empl = new EmplCompute(args[0], args[1]);
         empl.readFile();
+        //empl.printFile();
         empl.printDepartments();
         empl.computeTransactions();
     }

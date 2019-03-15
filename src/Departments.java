@@ -1,3 +1,5 @@
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -6,12 +8,12 @@ import java.util.List;
  */
 class Departments {
     private String dptName;
-    private Double avgSalary;
+    private BigDecimal avgSalary;
     private List<EmplPerson> emplPersons = new LinkedList<>();
 
     Departments(String dptName) {
         this.dptName = dptName;
-        avgSalary = 0.0;
+        avgSalary = new BigDecimal(0.0);
     }
 
     /**
@@ -25,9 +27,11 @@ class Departments {
      * Вычисление средней зарплаты по департаменты
      */
     void computeAvgSalary() {
-        avgSalary = 0.0;
-        emplPersons.forEach((n-> avgSalary+=n.getSalary()));
-        avgSalary /= emplPersons.size();
+        avgSalary = new BigDecimal(0.0);
+        avgSalary = emplPersons.stream()
+                .map(EmplPerson::getSalary)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+        avgSalary = avgSalary.divide(new BigDecimal(emplPersons.size()));
     }
     @Override
     public String toString() {
@@ -39,20 +43,24 @@ class Departments {
      * @param newEmplSalary зарплата сотрудника; при добавлении передается параметр  >0, при удалении  <0
      * @return средне значение зарплаты по департаменту
      */
-    double computeTransactionAvgSalary(double newEmplSalary) {
-        double tAvgSalary = 0.0;
-        tAvgSalary = emplPersons.stream().mapToDouble(n->n.getSalary()).sum();
-        tAvgSalary +=newEmplSalary;
-        if(newEmplSalary > 0) {
-            tAvgSalary /= emplPersons.size() + 1;
+    BigDecimal computeTransactionAvgSalary(BigDecimal newEmplSalary) {
+        BigDecimal tAvgSalary = emplPersons.stream()
+                .map(EmplPerson::getSalary)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+        tAvgSalary = tAvgSalary.add(newEmplSalary);
+
+        if(newEmplSalary.compareTo(new BigDecimal(0)) > 0) {
+            tAvgSalary = tAvgSalary.divide(new BigDecimal(emplPersons.size()+1),
+                    RoundingMode.HALF_EVEN);
         } else {
-            tAvgSalary /= emplPersons.size() - 1;
+            tAvgSalary = tAvgSalary.divide(new BigDecimal(emplPersons.size()-1),
+                    RoundingMode.HALF_EVEN);
         }
         return tAvgSalary;
     }
 
     public String getDptName() {return dptName;}
-    public double getAvgSalary() {return avgSalary;}
+    public BigDecimal getAvgSalary() {return avgSalary;}
     public List<EmplPerson> getEmployeersList() {return emplPersons;}
 
 }
