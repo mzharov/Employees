@@ -128,16 +128,6 @@ public class EmplCompute {
                         Departments deptsInner = deptIterInner.next().getValue();
                         if(!depts.getDptName().equals(deptsInner.getDptName())) {
                             if(emplPerson.getSalary().compareTo(deptsInner.getAvgSalary())  > 0) {
-                                /*
-                                tmpArray.add(emplPerson.getId() + ";"
-                                        + emplPerson.getLastName() + ";"
-                                        + deptsInner.getDptName() + ";"
-                                        + depts.getDptName() + ";"
-                                        + deptsInner.getTAvgSalary(emplPerson.getSalary()) + ";"
-                                        + depts.getTAvgSalary(emplPerson.getSalary().negate()) + ";"
-                                        + deptsInner.getAvgSalary() + ";"
-                                        + depts.getAvgSalary());*/
-
                                 tmpArray.add(String.format(getFormatter(),
                                         emplPerson.getId(),
                                         emplPerson.getLastName(),

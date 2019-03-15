@@ -9,7 +9,7 @@ class EmplPerson {
     private BigDecimal salary; //зарплата
     private int id; //Идентификатор
 
-    EmplPerson(int id, String lastName, BigDecimal salary) {
+    public EmplPerson(int id, String lastName, BigDecimal salary) {
         this.id = id;
         this.lastName = lastName;
         this.salary = salary;

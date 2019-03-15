@@ -11,7 +11,7 @@ class Departments {
     private BigDecimal allSalaries;
     private List<EmplPerson> emplPersons = new LinkedList<>();
 
-    Departments(String dptName) {
+    public Departments(String dptName) {
         this.dptName = dptName;
         allSalaries = new BigDecimal(0);
     }
@@ -63,3 +63,4 @@ class Departments {
     }
 
 }
+
