@@ -39,17 +39,13 @@ public class EmplCompute {
          */
         void addEmpl(EmplPerson empl) {
             emplPersons.add(empl);
-            //computeAvgSalary();
         }
         /**
          * Вычисление средней зарплаты по департаменты
          */
         void computeAvgSalary() {
             avgSalary = 0.0;
-            Iterator<EmplPerson> iter = emplPersons.iterator();
-            while (iter.hasNext()) {
-                avgSalary += iter.next().salary;
-            }
+            emplPersons.forEach((n-> avgSalary+=n.salary));
             avgSalary /= emplPersons.size();
         }
         @Override
@@ -64,10 +60,7 @@ public class EmplCompute {
          */
         double computeTransactionAvgSalary(double newEmplSalary) {
             double tAvgSalary = 0.0;
-            Iterator<EmplPerson> iter = emplPersons.iterator();
-            while (iter.hasNext()) {
-                tAvgSalary += iter.next().salary;
-            }
+            tAvgSalary = emplPersons.stream().mapToDouble(n->n.salary).sum();
             tAvgSalary +=newEmplSalary;
             if(newEmplSalary > 0) {
                 tAvgSalary /= emplPersons.size() + 1;
@@ -144,10 +137,7 @@ public class EmplCompute {
             /*
              * Считаем среднюю зарплату по департаментам
              */
-            Iterator<Departments> iter = departments.iterator();
-            while (iter.hasNext()) {
-                iter.next().computeAvgSalary();
-            }
+            departments.forEach(n->n.computeAvgSalary());
         } catch (FileNotFoundException e) {
             System.out.println("Файл не найден.");
             exit(-1);
@@ -175,10 +165,7 @@ public class EmplCompute {
      */
 
     public void printDepartments() {
-        Iterator<Departments> iter = departments.iterator();
-        while (iter.hasNext()) {
-            System.out.println(iter.next().toString());
-        }
+        departments.forEach(n->System.out.println(n.toString()));
     }
 
 

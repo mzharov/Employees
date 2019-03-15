@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5eccc9d3-6680-41ab-b96c-8898c89adc56" name="Default Changelist" comment="">
+    <list default="true" id="5eccc9d3-6680-41ab-b96c-8898c89adc56" name="Default Changelist" comment="Небольшие исправления">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Employees/EmplCompute$Departments.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Employees/EmplCompute$Departments.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Employees/EmplCompute$EmplPerson.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Employees/EmplCompute$EmplPerson.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Employees/EmplCompute.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Employees/EmplCompute.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EmplCompute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EmplCompute.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -26,10 +29,15 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/EmplCompute.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3396">
-              <caret line="19" column="59" selection-start-line="19" selection-start-column="59" selection-end-line="19" selection-end-column="59" />
+            <state relative-caret-position="-2975">
+              <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#1028#1029#0" expanded="true" />
+                <element signature="e#1073#1074#0" expanded="true" />
+                <element signature="e#1598#1599#0" expanded="true" />
+                <element signature="e#1651#1652#0" expanded="true" />
+                <element signature="e#5444#5445#0" expanded="true" />
+                <element signature="e#5516#5517#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -46,7 +54,11 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/out">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -83,8 +95,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -95,12 +105,19 @@
             <path>
               <item name="Employees" type="b2602c69:ProjectViewProjectNode" />
               <item name="Employees" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Employees" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Employees" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -111,7 +128,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552553782948" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552630157797" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -159,7 +176,9 @@
       <workItem from="1552487088560" duration="1750000" />
       <workItem from="1552488900328" duration="29000" />
       <workItem from="1552488966547" duration="441000" />
-      <workItem from="1552490206808" duration="8273000" />
+      <workItem from="1552490206808" duration="10436000" />
+      <workItem from="1552560242915" duration="2893000" />
+      <workItem from="1552572892586" duration="3649000" />
     </task>
     <task id="LOCAL-00001" summary="Первая версия">
       <created>1552484645614</created>
@@ -182,11 +201,32 @@
       <option name="project" value="LOCAL" />
       <updated>1552550381011</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Небольшие исправления">
+      <created>1552553678587</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1552553678587</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Небольшие исправления">
+      <created>1552553796942</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1552553796943</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Небольшие исправления">
+      <created>1552560298849</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1552560298849</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30539000" />
+    <option name="totallyTimeSpent" value="39244000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -201,7 +241,7 @@
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26639676" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27611336" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -210,7 +250,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49959514" visible="true" weight="0.3285968" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49878544" weight="0.3285968" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -218,10 +258,9 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.3285968" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.3285968" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50040483" side_tool="true" weight="0.3285968" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.3285968" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50121456" side_tool="true" weight="0.3285968" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.3285968" />
-      <window_info anchor="right" id="Remote Host" weight="0.32955465" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -231,6 +270,7 @@
       <window_info anchor="right" id="Maven" order="6" />
       <window_info anchor="right" id="Capture Analysis" order="7" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Remote Host" order="9" weight="0.32955465" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,8 +294,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-11.0.2/lib/src.zip!/java.base/java/util/function/ToDoubleFunction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="47" column="11" selection-start-line="47" selection-start-column="11" selection-end-line="47" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-11.0.2/lib/src.zip!/java.base/java/util/function/Consumer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="48" column="9" selection-start-line="48" selection-start-column="9" selection-end-line="48" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/out">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Employees.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -266,10 +324,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/EmplCompute.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3396">
-          <caret line="19" column="59" selection-start-line="19" selection-start-column="59" selection-end-line="19" selection-end-column="59" />
+        <state relative-caret-position="-2975">
+          <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#1028#1029#0" expanded="true" />
+            <element signature="e#1073#1074#0" expanded="true" />
+            <element signature="e#1598#1599#0" expanded="true" />
+            <element signature="e#1651#1652#0" expanded="true" />
+            <element signature="e#5444#5445#0" expanded="true" />
+            <element signature="e#5516#5517#0" expanded="true" />
           </folding>
         </state>
       </provider>
