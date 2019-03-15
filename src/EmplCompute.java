@@ -77,10 +77,7 @@ public class EmplCompute {
 
 
     public void printFile() {
-        Iterator<EmplPerson> iter = emplPersons.iterator();
-        while (iter.hasNext()) {
-            System.out.println(iter.next().toString());
-        }
+        emplPersons.forEach(n->System.out.println(n.toString()));
     }
 
 
@@ -107,12 +104,12 @@ public class EmplCompute {
             while (emplsIter.hasNext()) {
                 EmplPerson emplPerson = emplsIter.next();
                 //Если зарплата меньше среднего, то ищем департамент, где она больше среднего
-                if(emplPerson.getSalary().compareTo(depts.getAvgSalary())  == -1) {
+                if(emplPerson.getSalary().compareTo(depts.getAvgSalary())  < 0) {
                     Iterator<Departments> deptIterInner = departments.iterator();
                     while (deptIterInner.hasNext()) {
                         Departments deptsInner = deptIterInner.next();
                         if(!depts.getDptName().equals(deptsInner.getDptName())) {
-                            if(emplPerson.getSalary().compareTo(deptsInner.getAvgSalary())  == 1) {
+                            if(emplPerson.getSalary().compareTo(deptsInner.getAvgSalary())  > 0) {
                                 tmpArray.add(emplPerson.getId() + ";"
                                         + emplPerson.getLastName() + ";"
                                         + deptsInner.getDptName() + ";"
