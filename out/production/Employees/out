@@ -1,5 +1,10 @@
-//id;name;new department; previous department; new department avg salary; previous department avg  salary;new department old avg salary; previous department old avg salary
-0;Ivanov;Cleaning;IT;42667;93250;42500;83200
-5;Lyapunov;Cleaning;IT;49000;88500;42500;83200
-5;Lyapunov;HR;IT;60000;88500;59000;83200
-6;Volkov;Cleaning;IT;42667;93250;42500;83200
+  empl_id   empl_name    new_dept    prev_dept     new_dept_avg    prev_dept_avg    new_dept_old_avg    prev_dept_old_avg 
+
+         0 Ivanov       Cleaning    IT                     42667            93250               42500                83200
+
+         5 Lyapunov     Cleaning    IT                     49000            88500               42500                83200
+
+         5 Lyapunov     HR          IT                     60000            88500               59000                83200
+
+         6 Volkov       Cleaning    IT                     42667            93250               42500                83200
+
