@@ -6,10 +6,7 @@ import java.math.BigDecimal;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 
@@ -17,7 +14,7 @@ public class EmplCompute {
 
     private String inputFile;
     private String outputFile;
-    private List<EmplPerson> emplPersons = new ArrayList<>();
+    private List<EmplPerson> emplPersons = new LinkedList<>();
     private Map<String, Departments> departments = new ConcurrentHashMap<>();
 
     private final String[] tabs = {"empl_id", "empl_name" , "new_dept", "prev_dept",
@@ -30,45 +27,73 @@ public class EmplCompute {
         this.outputFile = outputFile;
     }
 
+
     /**
      * Считывание данных из файла и сохранение в ArrayList
      */
-    public void readFile() {
+    public boolean readFile() {
+
+        List<Integer> errorSet = new LinkedList<>();
+        int errorIterator = 0;
 
         try(BufferedReader br = new BufferedReader(new FileReader(inputFile))) {
             String line = "";
+
             while ((line = br.readLine()) != null) {
-                String[] tmp = line.split(";");
-                emplPersons.add(new EmplPerson(Integer.parseInt(tmp[0].trim()),
-                        tmp[1].trim(),
-                        new BigDecimal(tmp[3].trim())));
-                if(departments.containsKey(tmp[2].trim())) {
-                    /*
-                     * Если объект для департамента уже создан, то нового сотрудника добавляем туда
-                     */
-                    departments.get(tmp[2].trim()).addEmpl(new EmplPerson(Integer.parseInt(tmp[0].trim()),
+                //String[] tmp = line.split(";");
+                ++errorIterator;
+                if(InputLineFormatter.checkFileLine(line)) {
+                    String[] tmp = line.split(";");
+                    emplPersons.add(new EmplPerson(Integer.parseInt(tmp[0].trim()),
                             tmp[1].trim(),
                             new BigDecimal(tmp[3].trim())));
+
+                    if(departments.containsKey(tmp[2].trim())) {
+                        /*
+                         * Если объект для департамента уже создан, то нового сотрудника добавляем туда
+                         */
+                        departments.get(tmp[2].trim()).addEmpl(new EmplPerson(Integer.parseInt(tmp[0].trim()),
+                                tmp[1].trim(),
+                                new BigDecimal(tmp[3].trim())));
+                    } else {
+                        /*
+                         * Если департамент встчечается в первый раз,
+                         * создаем новый объект и добавляем сотрудника туда
+                         */
+                        Departments dpt = new Departments(tmp[2].trim());
+                        dpt.addEmpl(new EmplPerson(Integer.parseInt(tmp[0].trim()),
+                                tmp[1].trim(),
+                                new BigDecimal(tmp[3].trim())));
+                        departments.putIfAbsent(tmp[2].trim(), dpt);
+                    }
                 } else {
-                    /*
-                     * Если департамент встчечается в первый раз,
-                     * создаем новый объект и добавляем сотрудника туда
-                     */
-                    Departments dpt = new Departments(tmp[2].trim());
-                    dpt.addEmpl(new EmplPerson(Integer.parseInt(tmp[0].trim()),
-                            tmp[1].trim(),
-                            new BigDecimal(tmp[3].trim())));
-                    departments.putIfAbsent(tmp[2].trim(), dpt);
+                    errorSet.add(errorIterator);
                 }
             }
         } catch (FileNotFoundException e) {
-            System.out.println("Файл не найден.");
+            System.out.println("Файл " + inputFile + " не найден.");
+            return false;
         } catch (IOException e) {
-            System.out.println("Ошибка в ходе чтения.");
-        } catch (Exception e) {
-            System.out.println("Ошибка в ходе парсинга файла.");
-            e.printStackTrace();
+            System.out.println("Ошибка в ходе чтения файла " + inputFile);
+            return false;
         }
+        /*
+         * Если в ходе чтения так и не было найдено строк в правильном формате
+         * возвращаем false
+         */
+        if(departments.size() <=0) {
+            System.out.println("В файле " + "не были найдены необходимые данные.");
+            return false;
+        }
+        /*
+         * Вывод списка строк с ошибками
+         */
+        if((errorSet.size() > 0)) {
+            System.out.println("В данных строках были обнаружены ошибки и они не были считаны:");
+            errorSet.forEach(e->System.out.print(e + " "));
+            System.out.println();
+        }
+        return true;
     }
 
 
@@ -109,7 +134,7 @@ public class EmplCompute {
     /**
      * Находим сотрудников, которые удовлетворяют условию
      */
-    public void computeTransactions() {
+    public boolean computeTransactions() {
         List<String> tmpArray = new ArrayList<>();
 
         Iterator<Map.Entry<String,Departments>> deptIter =
@@ -156,13 +181,17 @@ public class EmplCompute {
            }
            catch (IOException e) {
                System.out.println("Ошибка в ходе записи в файл.");
+               return false;
            }
            catch (Exception e) {
                System.out.println("Ошибка в ходе обработки записи данных в файл.");
+               return false;
            }
         } else {
             System.out.println("Нет сотрудников удовлетворяющих условиям");
+            return false;
         }
+        return true;
     }
 
 }

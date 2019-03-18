@@ -6,13 +6,14 @@ public class Employees {
             System.out.println("Выходной файл: " + args[1]);
         }
         else {
-            System.out.println("Не были заданны необходимые входные параметры");
+            System.out.println("Не были заданы необходимые входные параметры: путь до входного и выходного файлов.");
         }
 
         EmplCompute empl = new EmplCompute(args[0], args[1]);
-        empl.readFile();
-        empl.printFile();
-        empl.printDepartments();
-        empl.computeTransactions();
+        if(empl.readFile()) {
+            empl.printFile();
+            empl.printDepartments();
+            empl.computeTransactions();
+        }
     }
 }

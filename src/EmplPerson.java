@@ -11,7 +11,7 @@ class EmplPerson {
 
     public EmplPerson(int id, String lastName, BigDecimal salary) {
         this.id = id;
-        this.lastName = lastName;
+        this.lastName = InputLineFormatter.formateStringToCase(lastName);
         this.salary = salary;
     }
 
@@ -23,6 +23,5 @@ class EmplPerson {
     public BigDecimal getSalary() {return salary;}
     public String getLastName() {return lastName;}
     public int getId() {return id;}
-
 
 }
