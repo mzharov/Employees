@@ -8,3 +8,13 @@
 
        6 Volkov     Cleaning  IT                 42667          93250             42500              83200
 
+All departments average salary:
+
+department_name   avg_salary
+
+Cleaning               42500
+
+HR                     59000
+
+IT                     83200
+

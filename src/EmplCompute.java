@@ -20,6 +20,7 @@ public class EmplCompute {
     private final String[] tabs = {"empl_id", "empl_name" , "new_dept", "prev_dept",
             "new_dept_avg", "prev_dept_avg",
             "new_dept_old_avg", "prev_dept_old_avg"};
+    private final String[] tabsDepartments = {"departmnet_name", "avg_salary"};
 
 
     EmplCompute(String inputFile, String outputFile) {
@@ -89,7 +90,7 @@ public class EmplCompute {
          * Вывод списка строк с ошибками
          */
         if((errorSet.size() > 0)) {
-            System.out.println("В данных строках были обнаружены ошибки и они не были считаны:");
+            System.out.println("В данных строках файла + " + inputFile + " были обнаружены ошибки и они не были считаны:");
             errorSet.forEach(e->System.out.print(e + " "));
             System.out.println();
         }
@@ -111,7 +112,7 @@ public class EmplCompute {
     }
 
 
-    private String getFormatter() {
+    private String getMainTableFormatter() {
         //"%s %15s %15s %15s %-15s %-15s %-15s %-15s\r\n"
         StringBuilder sb = new StringBuilder();
 
@@ -120,17 +121,33 @@ public class EmplCompute {
             if(i >=1 && i <=3) {
                 sb.append("-");
             }
-            sb.append((tabs[i].length()+1));
-            sb.append("s");
-            if(i!=tabs.length-1) {
-                sb.append(" ");
+            appendFormatter(sb, i, tabs);
+        }
+        sb.append("\r\n");
+        return sb.toString();
+    }
+    private String getFormatter() {
+        //"%s %15s %15s %15s %-15s %-15s %-15s %-15s\r\n"
+        StringBuilder sb = new StringBuilder();
+
+        for(int i = 0; i < tabsDepartments.length; i++) {
+            sb.append("%");
+            if(i == 0) {
+                sb.append("-");
             }
+            appendFormatter(sb, i, tabsDepartments);
         }
         sb.append("\r\n");
         return sb.toString();
     }
 
-
+    private void appendFormatter(StringBuilder sb, int i, final String[] tabs) {
+        sb.append((tabs[i].length()+1));
+        sb.append("s");
+        if(i!=tabs.length-1) {
+            sb.append(" ");
+        }
+    }
     /**
      * Находим сотрудников, которые удовлетворяют условию
      */
@@ -153,7 +170,7 @@ public class EmplCompute {
                         Departments deptsInner = deptIterInner.next().getValue();
                         if(!depts.getDptName().equals(deptsInner.getDptName())) {
                             if(emplPerson.getSalary().compareTo(deptsInner.getAvgSalary())  > 0) {
-                                tmpArray.add(String.format(getFormatter(),
+                                tmpArray.add(String.format(getMainTableFormatter(),
                                         emplPerson.getId(),
                                         emplPerson.getLastName(),
                                         deptsInner.getDptName(),
@@ -172,7 +189,11 @@ public class EmplCompute {
         //Если были найдены сотрудники, записываем полученный массив данных в выходной файл
         if(tmpArray.size() > 0) {
            try {
-               tmpArray.add(0, String.format(getFormatter(),
+               tmpArray.add("All departments average salary:");
+               tmpArray.add("");
+               tmpArray.add(String.format(getFormatter(), "department_name", "avg_salary"));
+               departments.forEach((k,v) -> tmpArray.add(String.format(getFormatter(), v.getDptName(), v.getAvgSalary())));
+               tmpArray.add(0, String.format(getMainTableFormatter(),
                        "empl_id", "empl_name" , "new_dept", "prev_dept",
                        "new_dept_avg", "prev_dept_avg",
                        "new_dept_old_avg", "prev_dept_old_avg"));
@@ -185,6 +206,7 @@ public class EmplCompute {
            }
            catch (Exception e) {
                System.out.println("Ошибка в ходе обработки записи данных в файл.");
+               e.printStackTrace();
                return false;
            }
         } else {

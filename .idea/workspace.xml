@@ -3,11 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="5eccc9d3-6680-41ab-b96c-8898c89adc56" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Employees/EmplCompute.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Employees/EmplCompute.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Employees/Employees.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Employees/Employees.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Employees/input" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Employees/input" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Employees/out" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Employees/out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EmplCompute.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EmplCompute.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Employees.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Employees.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/out" beforeDir="false" afterPath="$PROJECT_DIR$/src/out" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/src/target/" />
@@ -42,21 +41,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Employees.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="114" selection-start-line="8" selection-start-column="114" selection-end-line="8" selection-end-column="114" />
+            <state relative-caret-position="221">
+              <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/EmplCompute.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1853">
-              <caret line="109" column="25" selection-start-line="109" selection-start-column="20" selection-end-line="109" selection-end-column="25" />
+            <state relative-caret-position="-527">
+              <caret line="92" column="41" selection-start-line="92" selection-start-column="41" selection-end-line="92" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4412#4413#0" expanded="true" />
-                <element signature="e#4484#4485#0" expanded="true" />
+                <element signature="e#3846#3847#0" expanded="true" />
                 <element signature="e#3922#3923#0" expanded="true" />
               </folding>
             </state>
@@ -64,10 +62,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/EmplPerson.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="211">
+              <caret line="25" selection-start-line="25" selection-end-line="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/InputLineFormatter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="34" column="100" lean-forward="true" selection-start-line="34" selection-start-column="100" selection-end-line="34" selection-end-column="100" />
+            <state relative-caret-position="578">
+              <caret line="34" column="100" selection-start-line="34" selection-start-column="100" selection-end-line="34" selection-end-column="100" />
             </state>
           </provider>
         </entry>
@@ -75,8 +82,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Departments.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="60" column="27" selection-start-line="60" selection-start-column="26" selection-end-line="60" selection-end-column="27" />
+            <state relative-caret-position="194">
+              <caret line="36" column="5" lean-forward="true" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -93,11 +100,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/out">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="42" selection-start-line="2" selection-start-column="42" selection-end-line="2" selection-end-column="42" />
+            <state relative-caret-position="102">
+              <caret line="6" column="33" lean-forward="true" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -135,7 +142,6 @@
         <option value="$PROJECT_DIR$/src/Organisation.java" />
         <option value="$PROJECT_DIR$/src/Department.java" />
         <option value="$PROJECT_DIR$/src/Employee.java" />
-        <option value="$PROJECT_DIR$/src/Departments.java" />
         <option value="$PROJECT_DIR$/src/pom.fxml" />
         <option value="$PROJECT_DIR$/src/pom.xml" />
         <option value="$PROJECT_DIR$/Test/checkFileLineJUnit4Test.java" />
@@ -143,8 +149,9 @@
         <option value="$PROJECT_DIR$/src/input" />
         <option value="$PROJECT_DIR$/src/InputLineFormatter.java" />
         <option value="$PROJECT_DIR$/src/EmplPerson.java" />
-        <option value="$PROJECT_DIR$/src/EmplCompute.java" />
+        <option value="$PROJECT_DIR$/src/Departments.java" />
         <option value="$PROJECT_DIR$/src/Employees.java" />
+        <option value="$PROJECT_DIR$/src/EmplCompute.java" />
       </list>
     </option>
   </component>
@@ -167,7 +174,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -189,6 +195,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -203,7 +210,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552904462638" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552908153872" />
     <property name="last_opened_file_path" value="$APPLICATION_HOME_DIR$/lib/hamcrest-core-1.3.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -276,6 +283,7 @@
       <workItem from="1552560242915" duration="2893000" />
       <workItem from="1552572892586" duration="25038000" />
       <workItem from="1552659538968" duration="15025000" />
+      <workItem from="1552904816890" duration="3282000" />
     </task>
     <task id="LOCAL-00001" summary="Первая версия">
       <created>1552484645614</created>
@@ -375,7 +383,14 @@
       <option name="project" value="LOCAL" />
       <updated>1552904194978</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Squashed commit of the following:&#10;&#10;commit 2726aea1b75dbf0fd4495c4103e14c2aede7c85c&#10;Author: mzharov &lt;zharmiha@yandex.ru&gt;&#10;Date:   Mon Mar 18 13:25:49 2019 +0300&#10;&#10;    few fixes&#10;&#10;commit 021a63bffadcc7390059247bf282a5c4f34b1d0b&#10;Author: mzharov &lt;zharmiha@yandex.ru&gt;&#10;Date:   Mon Mar 18 13:16:33 2019 +0300&#10;&#10;    Проверка входной строки на соответсвие формату;&#10;    фамилия теперь в случае ошибки написания в входном файле приводится к необходимому виду&#10;    Написаны юнит тесты для этого функционала.">
+      <created>1552904873490</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1552904873490</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -411,7 +426,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79170000" />
+    <option name="totallyTimeSpent" value="82452000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -426,7 +441,7 @@
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4973545" visible="true" weight="0.18947369" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4973545" visible="true" weight="0.19271255" />
       <window_info id="Structure" order="1" sideWeight="0.5026455" side_tool="true" weight="0.18947369" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -504,7 +519,8 @@
     <MESSAGE value="Новый механизм расчета средней зарплаты по отделу (непосредственно при ее запросе делением общей суммы зарплаты сотрудников на их кол-во)" />
     <MESSAGE value="few fixes" />
     <MESSAGE value="Проверка входной строки на соответсвие формату;&#10;фамилия теперь в случае ошибки написания в входном файле приводится к необходимому виду&#10;Написаны юнит тесты для этого функционала." />
-    <option name="LAST_COMMIT_MESSAGE" value="Проверка входной строки на соответсвие формату;&#10;фамилия теперь в случае ошибки написания в входном файле приводится к необходимому виду&#10;Написаны юнит тесты для этого функционала." />
+    <MESSAGE value="Squashed commit of the following:&#10;&#10;commit 2726aea1b75dbf0fd4495c4103e14c2aede7c85c&#10;Author: mzharov &lt;zharmiha@yandex.ru&gt;&#10;Date:   Mon Mar 18 13:25:49 2019 +0300&#10;&#10;    few fixes&#10;&#10;commit 021a63bffadcc7390059247bf282a5c4f34b1d0b&#10;Author: mzharov &lt;zharmiha@yandex.ru&gt;&#10;Date:   Mon Mar 18 13:16:33 2019 +0300&#10;&#10;    Проверка входной строки на соответсвие формату;&#10;    фамилия теперь в случае ошибки написания в входном файле приводится к необходимому виду&#10;    Написаны юнит тесты для этого функционала." />
+    <option name="LAST_COMMIT_MESSAGE" value="Squashed commit of the following:&#10;&#10;commit 2726aea1b75dbf0fd4495c4103e14c2aede7c85c&#10;Author: mzharov &lt;zharmiha@yandex.ru&gt;&#10;Date:   Mon Mar 18 13:25:49 2019 +0300&#10;&#10;    few fixes&#10;&#10;commit 021a63bffadcc7390059247bf282a5c4f34b1d0b&#10;Author: mzharov &lt;zharmiha@yandex.ru&gt;&#10;Date:   Mon Mar 18 13:16:33 2019 +0300&#10;&#10;    Проверка входной строки на соответсвие формату;&#10;    фамилия теперь в случае ошибки написания в входном файле приводится к необходимому виду&#10;    Написаны юнит тесты для этого функционала." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="editorHistoryManager">
@@ -535,21 +551,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pom.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pom.fxml" />
+    <entry file="file://$PROJECT_DIR$/src/pom.xml" />
     <entry file="jar://C:/Program Files/Java/jdk-11.0.2/lib/src.zip!/java.base/java/lang/ClassLoader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="117">
@@ -559,17 +562,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Employees.iml">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/EmplPerson.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
-          <folding>
-            <element signature="e#412#413#0" expanded="true" />
-            <element signature="e#459#460#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Test/formateStringToCaseJUnit4Test.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -593,25 +585,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/InputLineFormatter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="34" column="100" lean-forward="true" selection-start-line="34" selection-start-column="100" selection-end-line="34" selection-end-column="100" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Departments.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="60" column="27" selection-start-line="60" selection-start-column="26" selection-end-line="60" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Employees.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="114" selection-start-line="8" selection-start-column="114" selection-end-line="8" selection-end-column="114" />
+        <state relative-caret-position="578">
+          <caret line="34" column="100" selection-start-line="34" selection-start-column="100" selection-end-line="34" selection-end-column="100" />
         </state>
       </provider>
     </entry>
@@ -622,23 +597,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/out">
+    <entry file="file://$PROJECT_DIR$/src/Departments.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="42" selection-start-line="2" selection-start-column="42" selection-end-line="2" selection-end-column="42" />
+        <state relative-caret-position="194">
+          <caret line="36" column="5" lean-forward="true" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/EmplPerson.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Employees.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="29" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/EmplCompute.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1853">
-          <caret line="109" column="25" selection-start-line="109" selection-start-column="20" selection-end-line="109" selection-end-column="25" />
+        <state relative-caret-position="-527">
+          <caret line="92" column="41" selection-start-line="92" selection-start-column="41" selection-end-line="92" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4412#4413#0" expanded="true" />
-            <element signature="e#4484#4485#0" expanded="true" />
+            <element signature="e#3846#3847#0" expanded="true" />
             <element signature="e#3922#3923#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/out">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="33" lean-forward="true" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
         </state>
       </provider>
     </entry>
