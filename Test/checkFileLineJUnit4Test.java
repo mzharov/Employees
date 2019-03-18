@@ -10,7 +10,6 @@ public class checkFileLineJUnit4Test extends Assert{
          */
         assertTrue(InputLineFormatter.checkFileLine("0;Ivanov;IT;43000"));
         assertTrue(InputLineFormatter.checkFileLine(" 1; Ivanovich ; ITS ;            143000 "));
-        assertFalse(InputLineFormatter.checkFileLine("12;13;14;15"));
         assertTrue(InputLineFormatter.checkFileLine("12;Ivanov;14;15"));
         assertTrue(InputLineFormatter.checkFileLine("0;Ivanov;IT;12000;"));
 
@@ -41,6 +40,8 @@ public class checkFileLineJUnit4Test extends Assert{
         /*
          * Проверка фамилии
          */
+        assertFalse(InputLineFormatter.checkFileLine("12;13;14;15"));
+        assertTrue(InputLineFormatter.checkFileLine("12;Li;14;15"));
         assertTrue(InputLineFormatter.checkFileLine("1; Ivanov; ITS; 143000"));
         assertTrue(InputLineFormatter.checkFileLine("1; Iv; ITS; 143000"));
         assertFalse(InputLineFormatter.checkFileLine("1; I; ITS; 143000"));

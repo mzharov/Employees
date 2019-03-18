@@ -16,6 +16,7 @@ public class EmplCompute {
     private String outputFile;
     private List<EmplPerson> emplPersons = new LinkedList<>();
     private Map<String, Departments> departments = new ConcurrentHashMap<>();
+    private List<Integer> errorSet = new LinkedList<>();
 
     private final String[] tabs = {"empl_id", "empl_name" , "empl_salary", "new_dept", "prev_dept",
             "new_dept_avg", "prev_dept_avg",
@@ -28,12 +29,15 @@ public class EmplCompute {
         this.outputFile = outputFile;
     }
 
+    public String getInputFile() {return inputFile;}
+    public String getOutputFile() {return outputFile;}
+    public List<Integer> getErrorSet() {return errorSet;}
+
     /**
      * Считывание данных из файла и сохранение в ArrayList
+     * @return -2 данные не были найдены; -1 - ошибка чтения; 0 - файл не найден;  1 - файл прочитан;
      */
-    public boolean readFile() {
-
-        List<Integer> errorSet = new LinkedList<>();
+    public int readFile() {
         int errorIterator = 0;
 
         try(BufferedReader br = new BufferedReader(new FileReader(inputFile))) {
@@ -71,29 +75,21 @@ public class EmplCompute {
                 }
             }
         } catch (FileNotFoundException e) {
-            System.out.println("Файл " + inputFile + " не найден.");
-            return false;
+            return 0;
         } catch (IOException e) {
-            System.out.println("Ошибка в ходе чтения файла " + inputFile);
-            return false;
+            return -1;
         }
         /*
          * Если в ходе чтения так и не было найдено строк в правильном формате
-         * возвращаем false
+         * возвращаем -2
          */
         if(departments.size() <=0) {
-            System.out.println("В файле " + "не были найдены необходимые данные.");
-            return false;
+            return -2;
         }
         /*
-         * Вывод списка строк с ошибками
+         *возвращаем 1 в случае успешного чтения файла
          */
-        if((errorSet.size() > 0)) {
-            System.out.println("В данных строках файла + " + inputFile + " были обнаружены ошибки и они не были считаны:");
-            errorSet.forEach(e->System.out.print(e + " "));
-            System.out.println();
-        }
-        return true;
+        return 1;
     }
 
 
@@ -154,10 +150,12 @@ public class EmplCompute {
             sb.append(" ");
         }
     }
+
     /**
      * Находим сотрудников, которые удовлетворяют условию
+     * @return  -2 - нет сотрудников удовлетворяющим условию; -1 - ошибка в ходе записи; 1 - данные успешно записаны в файл
      */
-    public boolean computeTransactions() {
+    public int computeTransactions() {
         List<String> tmpArray = new ArrayList<>();
 
         Iterator<Map.Entry<String,Departments>> deptIter =
@@ -202,22 +200,15 @@ public class EmplCompute {
                departments.forEach((k,v) -> tmpArray.add(String.format(getFormatter(), v.getDptName(), v.getAvgSalary())));
                tmpArray.add(0, String.format(getMainTableFormatter(), tabs));
                Files.write(Paths.get(outputFile), tmpArray, Charset.defaultCharset());
-               System.out.println("Данные успешно записаны в файл.");
-           }
-           catch (IOException e) {
-               System.out.println("Ошибка в ходе записи в файл.");
-               return false;
            }
            catch (Exception e) {
-               System.out.println("Ошибка в ходе обработки записи данных в файл.");
                e.printStackTrace();
-               return false;
+               return -1;
            }
         } else {
-            System.out.println("Нет сотрудников удовлетворяющих условиям");
-            return false;
+            return -2;
         }
-        return true;
+        return 1;
     }
 
 }
