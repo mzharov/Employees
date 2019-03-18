@@ -3,7 +3,7 @@ import java.math.BigDecimal;
 /**
  * Хранение данных о сотрудника
  */
-class EmplPerson {
+public class EmplPerson {
 
     private String lastName; //Фамилия
     private BigDecimal salary; //зарплата

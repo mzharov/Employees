@@ -1,6 +1,18 @@
 import java.math.BigDecimal;
+import java.util.Arrays;
 
 public class InputLineFormatter {
+
+    /**
+     * Удаление лишних пробелов из строкового массива
+     * @param tmp входная строка
+     * @return массив строк без лишних пробелов
+     */
+    public static String[] trimArray(String tmp) {
+        String[] tmpArray = tmp.split(";");
+        return Arrays.stream(tmpArray).map(String::trim).toArray(String[]::new);
+    }
+
     /**
      * Проверка правильности считываемой строки необходимому формату
      * @param tmpLine входная строка id типа(int) >=0; Last Name (String); Department (String); Salary (BigDecimal) > 0
@@ -8,14 +20,14 @@ public class InputLineFormatter {
      */
     public static boolean checkFileLine(final String tmpLine) {
         try {
-            String[] tmp = tmpLine.split(";");
+            String[] tmp = trimArray(tmpLine);
 
             if(tmp[0].contains("-")
                     || tmp[1].equals("")
                     || tmp[2].equals("")
-                    || ! tmp[1].trim().matches("[A-Za-z]{2,}")
-                    || (Integer.parseInt(tmp[0].trim()) < 0)
-                    || ((new BigDecimal(tmp[3].trim()))
+                    || ! tmp[1].matches("[A-Za-z]{2,}")
+                    || (Integer.parseInt(tmp[0]) < 0)
+                    || ((new BigDecimal(tmp[3]))
                     .compareTo(new BigDecimal(0)) <=0)
                     ||tmp.length != 4) {
                 throw new Exception();

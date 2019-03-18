@@ -17,7 +17,7 @@ public class EmplCompute {
     private List<EmplPerson> emplPersons = new LinkedList<>();
     private Map<String, Departments> departments = new ConcurrentHashMap<>();
 
-    private final String[] tabs = {"empl_id", "empl_name" , "new_dept", "prev_dept",
+    private final String[] tabs = {"empl_id", "empl_name" , "empl_salary", "new_dept", "prev_dept",
             "new_dept_avg", "prev_dept_avg",
             "new_dept_old_avg", "prev_dept_old_avg"};
     private final String[] tabsDepartments = {"departmnet_name", "avg_salary"};
@@ -27,7 +27,6 @@ public class EmplCompute {
         this.inputFile = inputFile;
         this.outputFile = outputFile;
     }
-
 
     /**
      * Считывание данных из файла и сохранение в ArrayList
@@ -44,28 +43,28 @@ public class EmplCompute {
                 //String[] tmp = line.split(";");
                 ++errorIterator;
                 if(InputLineFormatter.checkFileLine(line)) {
-                    String[] tmp = line.split(";");
-                    emplPersons.add(new EmplPerson(Integer.parseInt(tmp[0].trim()),
-                            tmp[1].trim(),
-                            new BigDecimal(tmp[3].trim())));
+                    String[] tmp = InputLineFormatter.trimArray(line);
+                    emplPersons.add(new EmplPerson(Integer.parseInt(tmp[0]),
+                            tmp[1],
+                            new BigDecimal(tmp[3])));
 
-                    if(departments.containsKey(tmp[2].trim())) {
+                    if(departments.containsKey(tmp[2])) {
                         /*
                          * Если объект для департамента уже создан, то нового сотрудника добавляем туда
                          */
-                        departments.get(tmp[2].trim()).addEmpl(new EmplPerson(Integer.parseInt(tmp[0].trim()),
-                                tmp[1].trim(),
-                                new BigDecimal(tmp[3].trim())));
+                        departments.get(tmp[2]).addEmpl(new EmplPerson(Integer.parseInt(tmp[0]),
+                                tmp[1],
+                                new BigDecimal(tmp[3])));
                     } else {
                         /*
                          * Если департамент встчечается в первый раз,
                          * создаем новый объект и добавляем сотрудника туда
                          */
-                        Departments dpt = new Departments(tmp[2].trim());
-                        dpt.addEmpl(new EmplPerson(Integer.parseInt(tmp[0].trim()),
-                                tmp[1].trim(),
-                                new BigDecimal(tmp[3].trim())));
-                        departments.putIfAbsent(tmp[2].trim(), dpt);
+                        Departments dpt = new Departments(tmp[2]);
+                        dpt.addEmpl(new EmplPerson(Integer.parseInt(tmp[0]),
+                                tmp[1],
+                                new BigDecimal(tmp[3])));
+                        departments.putIfAbsent(tmp[2], dpt);
                     }
                 } else {
                     errorSet.add(errorIterator);
@@ -112,13 +111,16 @@ public class EmplCompute {
     }
 
 
+    /**
+     * @return формат вывода таблицы переводов
+     */
     private String getMainTableFormatter() {
         //"%s %15s %15s %15s %-15s %-15s %-15s %-15s\r\n"
         StringBuilder sb = new StringBuilder();
 
         for(int i = 0; i < tabs.length; i++) {
             sb.append("%");
-            if(i >=1 && i <=3) {
+            if(i == 1 || i == 3 || i == 4) {
                 sb.append("-");
             }
             appendFormatter(sb, i, tabs);
@@ -126,6 +128,10 @@ public class EmplCompute {
         sb.append("\r\n");
         return sb.toString();
     }
+
+    /**
+     * @return формат вывода таблицы департаментов
+     */
     private String getFormatter() {
         //"%s %15s %15s %15s %-15s %-15s %-15s %-15s\r\n"
         StringBuilder sb = new StringBuilder();
@@ -173,6 +179,7 @@ public class EmplCompute {
                                 tmpArray.add(String.format(getMainTableFormatter(),
                                         emplPerson.getId(),
                                         emplPerson.getLastName(),
+                                        emplPerson.getSalary(),
                                         deptsInner.getDptName(),
                                         depts.getDptName(),
                                         deptsInner.getTAvgSalary(emplPerson.getSalary()),
@@ -191,12 +198,9 @@ public class EmplCompute {
            try {
                tmpArray.add("All departments average salary:");
                tmpArray.add("");
-               tmpArray.add(String.format(getFormatter(), "department_name", "avg_salary"));
+               tmpArray.add(String.format(getFormatter(), tabsDepartments));
                departments.forEach((k,v) -> tmpArray.add(String.format(getFormatter(), v.getDptName(), v.getAvgSalary())));
-               tmpArray.add(0, String.format(getMainTableFormatter(),
-                       "empl_id", "empl_name" , "new_dept", "prev_dept",
-                       "new_dept_avg", "prev_dept_avg",
-                       "new_dept_old_avg", "prev_dept_old_avg"));
+               tmpArray.add(0, String.format(getMainTableFormatter(), tabs));
                Files.write(Paths.get(outputFile), tmpArray, Charset.defaultCharset());
                System.out.println("Данные успешно записаны в файл.");
            }

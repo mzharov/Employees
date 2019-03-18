@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Класс для хранения данных о департаментах
  */
-class Departments {
+public class Departments {
     private String dptName;
     private BigDecimal allSalaries;
     private List<EmplPerson> emplPersons = new LinkedList<>();

@@ -9,7 +9,7 @@ public class checkFileLineJUnit4Test extends Assert{
          *Правильные входные данные
          */
         assertTrue(InputLineFormatter.checkFileLine("0;Ivanov;IT;43000"));
-        assertTrue(InputLineFormatter.checkFileLine(" 1; Ivanovich ; ITS ;143000 "));
+        assertTrue(InputLineFormatter.checkFileLine(" 1; Ivanovich ; ITS ;            143000 "));
         assertFalse(InputLineFormatter.checkFileLine("12;13;14;15"));
         assertTrue(InputLineFormatter.checkFileLine("12;Ivanov;14;15"));
         assertTrue(InputLineFormatter.checkFileLine("0;Ivanov;IT;12000;"));
