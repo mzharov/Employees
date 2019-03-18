@@ -10,6 +10,7 @@ class Departments {
     private String dptName;
     private BigDecimal allSalaries;
     private List<EmplPerson> emplPersons = new LinkedList<>();
+    private final RoundingMode roundingMode = RoundingMode.HALF_UP;
 
     public Departments(String dptName) {
         this.dptName = dptName;
@@ -28,7 +29,7 @@ class Departments {
      * Вычисление средней зарплаты по департаменты
      */
     private BigDecimal computeAvgSalary() {
-        return allSalaries.divide(new BigDecimal(emplPersons.size()), RoundingMode.UP);
+        return allSalaries.divide(new BigDecimal(emplPersons.size()), roundingMode);
     }
     @Override
     public String toString() {
@@ -47,10 +48,10 @@ class Departments {
 
         if(newEmplSalary.compareTo(new BigDecimal(0)) > 0) {
             tAvgSalary = tAvgSalary.divide(new BigDecimal(emplPersons.size()+1),
-                    RoundingMode.UP);
+                    roundingMode);
         } else {
             tAvgSalary = tAvgSalary.divide(new BigDecimal(emplPersons.size()-1),
-                    RoundingMode.UP);
+                    roundingMode);
         }
         return tAvgSalary;
     }
