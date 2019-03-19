@@ -10,7 +10,7 @@ public class Departments {
     private String dptName;
     private BigDecimal allSalaries;
     private List<EmplPerson> emplPersons = new LinkedList<>();
-    private final RoundingMode roundingMode = RoundingMode.HALF_UP;
+    public static final RoundingMode ROUNDING_MODE = RoundingMode.HALF_UP;
 
     public Departments(String dptName) {
         this.dptName = dptName;
@@ -29,7 +29,7 @@ public class Departments {
      * Вычисление средней зарплаты по департаменты
      */
     private BigDecimal computeAvgSalary() {
-        return allSalaries.divide(new BigDecimal(emplPersons.size()), roundingMode);
+        return allSalaries.divide(new BigDecimal(emplPersons.size()), ROUNDING_MODE);
     }
     @Override
     public String toString() {
@@ -42,18 +42,21 @@ public class Departments {
      * @return средне значение зарплаты по департаменту
      */
 
-    private BigDecimal computeTransactionAvgSalary(BigDecimal newEmplSalary) {
+    private BigDecimal computeTransactionAvgSalary(BigDecimal newEmplSalary, int size) {
         BigDecimal tAvgSalary = allSalaries;
         tAvgSalary = tAvgSalary.add(newEmplSalary);
 
         if(newEmplSalary.compareTo(new BigDecimal(0)) > 0) {
-            tAvgSalary = tAvgSalary.divide(new BigDecimal(emplPersons.size()+1),
-                    roundingMode);
+            tAvgSalary = tAvgSalary.divide(new BigDecimal(emplPersons.size()+size),
+                    ROUNDING_MODE);
         } else {
-            tAvgSalary = tAvgSalary.divide(new BigDecimal(emplPersons.size()-1),
-                    roundingMode);
+            tAvgSalary = tAvgSalary.divide(new BigDecimal(emplPersons.size()-size),
+                    ROUNDING_MODE);
         }
         return tAvgSalary;
+    }
+    private BigDecimal computeTransactionAvgSalary(BigDecimal newEmplSalary) {
+        return computeTransactionAvgSalary(newEmplSalary, 1);
     }
 
     public String getDptName() {return dptName;}
@@ -62,6 +65,8 @@ public class Departments {
     public BigDecimal getTAvgSalary(BigDecimal newEmplSalary) {
         return computeTransactionAvgSalary(newEmplSalary);
     }
-
+    public BigDecimal getTAvgSalary(BigDecimal newEmplSalary, int size) {
+        return computeTransactionAvgSalary(newEmplSalary, size);
+    }
 }
 
