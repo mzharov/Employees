@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Combination {
@@ -11,8 +12,7 @@ public class Combination {
      * @return список индексов элементов (комбинаторное сочетание)
      */
     public List<int[]> process(int size) {
-        int[] input = new int[size];
-        for(int i = 1; i <= input.length; i++) {
+        for(int i = 1; i <= size; i++) {
             doCombination(size, i);
         }
         //subsets.forEach(n-> System.out.println(Arrays.toString(n)));
@@ -28,11 +28,10 @@ public class Combination {
 
         if (k <= size) {
 
-            //Добавление одиночных вариантов
             for (int i = 0; (s[i] = i) < k - 1; i++);
             indexList.add(getSubset(s));
 
-            //Поиск множественных сочетаний
+            //Поиск сочетаний
             for(;;) {
                 int i;
 
@@ -49,11 +48,8 @@ public class Combination {
         }
     }
 
+    
     private static int[] getSubset(int[] subset) {
-        int[] result = new int[subset.length];
-        for (int i = 0; i < subset.length; i++)
-            //result[i] = input[subset[i]];
-            result[i] = subset[i];
-        return result;
+        return Arrays.copyOf(subset, subset.length);
     }
 }
