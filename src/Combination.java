@@ -1,10 +1,10 @@
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Combination {
 
-    private List<int[]> indexList = new ArrayList<>();
+    private List<int[]> indexList = new LinkedList<>();
 
     /**
      * Получение размера сочетаниемого массива
@@ -48,7 +48,7 @@ public class Combination {
         }
     }
 
-    
+
     private static int[] getSubset(int[] subset) {
         return Arrays.copyOf(subset, subset.length);
     }

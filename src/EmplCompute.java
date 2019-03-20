@@ -71,7 +71,7 @@ public class EmplCompute {
                                 new BigDecimal(tmp[3])));
                     } else {
                         /*
-                         * Если департамент встчечается в первый раз,
+                         * Если департамент встречается в первый раз,
                          * создаем новый объект и добавляем сотрудника туда
                          */
                         Departments dpt = new Departments(tmp[2]);
