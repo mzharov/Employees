@@ -6,7 +6,8 @@ public class Employees {
             System.out.println("Выходной файл: " + args[1]);
         }
         else {
-            System.out.println("Должно быть как минимум два входных параметра (путь до входного и выходного файлов)");
+            System.out.println("Должно быть как минимум два входных параметра " +
+                    "(путь до входного и выходного файлов)");
         }
 
         EmplCompute empl = new EmplCompute(args[0], args[1]);
@@ -15,18 +16,21 @@ public class Employees {
          * Отслеживаем состояние чтения и выводим соотвествующие сообщения
          */
 
-        int readCondition = empl.readFile();
-        switch (readCondition) {
+        switch (empl.readFile()) {
             case -2: {
-                System.out.println("В файле " + empl.getInputFile() + " не были найдены необходимые данные.");
+                System.out.println("В файле "
+                        + empl.getInputFile()
+                        + " не были найдены необходимые данные.");
                 break;
             }
             case -1: {
-                System.out.println("Ошибка в ходе чтения файла " + empl.getInputFile());
+                System.out.println("Ошибка в ходе чтения файла "
+                        + empl.getInputFile());
                 break;
             }
             case 0: {
-                System.out.println("Файл " + empl.getInputFile() + " не найден.");
+                System.out.println("Файл " + empl.getInputFile()
+                        + " не найден.");
             }
             case 1: {
                 /*
@@ -43,8 +47,7 @@ public class Employees {
                 /*
                  * Отслеживаем состояние поиска и записи в файл
                  */
-                int transCondition = empl.computeTransactions(EmplCompute.MULTIPLE_TABLE);
-                switch (transCondition) {
+                switch (empl.computeTransactions(EmplCompute.MULTIPLE_TABLE)) {
                     case -2: {
                         System.out.println("Нет сотрудников удовлетворяющих условиям");
                         break;
@@ -54,7 +57,8 @@ public class Employees {
                         break;
                     }
                     case 1: {
-                        System.out.println("Данные успешно записаны в файл " + empl.getOutputFile());
+                        System.out.println("Данные успешно записаны в файл "
+                                + empl.getOutputFile());
                         break;
                     }
                 }
