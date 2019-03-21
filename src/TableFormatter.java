@@ -27,11 +27,7 @@ public class TableFormatter {
         this.header = header;
         rowMaxSize = new int[header.length];
         getRowsMaxSize(header);
-        if(spaces.equals(SPACES)) {
-            this.spaces = true;
-        } else {
-            this.spaces = false;
-        }
+        this.spaces = spaces.equals(SPACES);
         sTable.add(header);
     }
 
@@ -95,10 +91,10 @@ public class TableFormatter {
 
     /**
      * Форматирование строки
-     * @param stroke
+     * @param stroke строка, которую необходимо форматировать
      * @return отформатированная строка
      */
-    private String formateString(Object[] stroke) {
+    private String formatString(Object[] stroke) {
         if(formatter == null) {
             formatter = getTableFormatter();
         }
@@ -107,7 +103,7 @@ public class TableFormatter {
 
     /**
      * Добавление строки в таблицу
-     * @param stroke
+     * @param stroke строка для добавления в таблицу
      */
     public void addStroke(Object[] stroke) {
         if(isDigit == null) {
@@ -125,7 +121,7 @@ public class TableFormatter {
         List<String> finalTable = new LinkedList<>();
         Iterator<Object[]> sIterator = sTable.iterator();
         while (sIterator.hasNext()) {
-            finalTable.add(formateString(sIterator.next()));
+            finalTable.add(formatString(sIterator.next()));
         }
         return finalTable;
     }
@@ -134,7 +130,7 @@ public class TableFormatter {
      * Проверка таблицы на пустоту
      * @return true - если пустая, иначе - false
      */
-    public boolean isEmpty() {return sTable.isEmpty();}
+    public boolean isEmpty() {return sTable.size() <= 1;}
 
     /**
      * Соединение таблиц

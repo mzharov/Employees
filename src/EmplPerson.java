@@ -11,7 +11,7 @@ public class EmplPerson {
 
     public EmplPerson(int id, String lastName, BigDecimal salary) {
         this.id = id;
-        this.lastName = InputLineFormatter.formateStringToCase(lastName);
+        this.lastName = InputLineFormatter.formatStringToCase(lastName);
         this.salary = salary;
     }
 

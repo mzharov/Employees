@@ -46,7 +46,7 @@ public class InputLineFormatter {
      * @param fString входная строка
      * @return первый символ - верхний регистр; остальные нижний: IvaNov -> Ivanov; ivanOv -> Ivanov
      */
-    public static String formateStringToCase(String fString) {
+    public static String formatStringToCase(String fString) {
         return fString.substring(0, 1).toUpperCase() + fString.substring(1).toLowerCase();
     }
 }

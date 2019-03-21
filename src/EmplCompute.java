@@ -139,7 +139,7 @@ public class EmplCompute {
 
             //Проходим по всем сотрудникам и сравниваем их зарплату с средней зарплатой по департаменту
 
-            Iterator<EmplPerson> emplsIter = depts.getEmployeersList().iterator();
+            Iterator<EmplPerson> emplsIter = depts.getEmployeesList().iterator();
             List<EmplPerson> emplPersonList = new ArrayList<>(); //Сохраняем тех, у кого зарплата < среднего в список
 
             while (emplsIter.hasNext()) {

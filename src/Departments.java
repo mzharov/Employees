@@ -64,7 +64,7 @@ public class Departments {
 
     public String getDptName() {return dptName;}
     public BigDecimal getAvgSalary() {return computeAvgSalary();}
-    public List<EmplPerson> getEmployeersList() {return emplPersons;}
+    public List<EmplPerson> getEmployeesList() {return emplPersons;}
     public BigDecimal getTAvgSalary(BigDecimal newEmplSalary) {
         return computeTransactionAvgSalary(newEmplSalary);
     }
