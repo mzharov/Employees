@@ -18,6 +18,8 @@ public class EmplCompute {
     private List<EmplPerson> emplPersons = new LinkedList<>();
     private Map<String, Departments> departments = new ConcurrentHashMap<>();
     private List<Integer> errorSet = new LinkedList<>();
+    public static  final String SINGLE_TABLE = "table"; //Запись в файл только основной таблицы
+    public static  final String MULTIPLE_TABLE = "m_table"; //запись в файл основной таблицы и таблицы департаментов
 
     private final String[] tabs = {"empl_id", "empl_name", "empl_salary", "new_dept", "prev_dept",
             "new_dept_avg", "prev_dept_avg",
@@ -33,11 +35,9 @@ public class EmplCompute {
     public String getInputFile() {
         return inputFile;
     }
-
     public String getOutputFile() {
         return outputFile;
     }
-
     public List<Integer> getErrorSet() {
         return errorSet;
     }
@@ -116,65 +116,25 @@ public class EmplCompute {
         departments.forEach((k, v) -> System.out.println(v.toString()));
     }
 
-
-    /**
-     * @return формат вывода таблицы переводов
-     */
-    private String getMainTableFormatter() {
-        //"%s %15s %15s %15s %-15s %-15s %-15s %-15s\r\n"
-        StringBuilder sb = new StringBuilder();
-
-        for (int i = 0; i < tabs.length; i++) {
-            sb.append("%");
-            if (i == 1 || i == 3 || i == 4) {
-                sb.append("-");
-            }
-            appendFormatter(sb, i, tabs);
-        }
-        sb.append("\r\n");
-        return sb.toString();
-    }
-
-    /**
-     * @return формат вывода таблицы департаментов
-     */
-    private String getFormatter() {
-        //"%s %15s %15s %15s %-15s %-15s %-15s %-15s\r\n"
-        StringBuilder sb = new StringBuilder();
-
-        for (int i = 0; i < tabsDepartments.length; i++) {
-            sb.append("%");
-            if (i == 0) {
-                sb.append("-");
-            }
-            appendFormatter(sb, i, tabsDepartments);
-        }
-        sb.append("\r\n");
-        return sb.toString();
-    }
-
-    private void appendFormatter(StringBuilder sb, int i, final String[] tabs) {
-        sb.append((tabs[i].length() + 1));
-        sb.append("s");
-        if (i != tabs.length - 1) {
-            sb.append(" ");
-        }
-    }
-
     /**
      * Находим сотрудников, которые удовлетворяют условию
      *
      * @return -2 - нет сотрудников удовлетворяющим условию; -1 - ошибка в ходе записи; 1 - данные успешно записаны в файл
      */
-    public int computeTransactions() {
-        List<String> tmpArray = new ArrayList<>();
-        TableFormatter tableFormatter = new TableFormatter(tabs);
+    public int computeTransactions(String tableMode) {
+        /*
+         * Объект для форматирования таблицы вывода
+         * в качестве параметра передается заголовок таблицы
+         */
+        TableFormatter tableFormatter = new TableFormatter(tabs, TableFormatter.NOSPACES);
 
         Iterator<Map.Entry<String, Departments>> deptIter =
                 departments.entrySet().iterator();
         while (deptIter.hasNext()) {
             Departments depts = deptIter.next().getValue();
+
             //Проходим по всем сотрудникам и сравниваем их зарплату с средней зарплатой по департаменту
+
             Iterator<EmplPerson> emplsIter = depts.getEmployeersList().iterator();
             List<EmplPerson> emplPersonList = new ArrayList<>(); //Сохраняем тех, у кого зарплата < среднего в список
 
@@ -189,6 +149,7 @@ public class EmplCompute {
             /*
              * Находим все возможные комбинаторные сочетания (индексы элементов, по которым затем будет идти обращение)
              */
+
             List<int[]> indexList = (new Combination()).process(emplPersonList.size());
             Iterator<int[]> indexIterator = indexList.iterator();
 
@@ -200,7 +161,7 @@ public class EmplCompute {
 
                 /*
                  * Находим сумму зарплат комбинаций
-                 * Формируем списки комбинаций
+                 * Формируем списки комбинаций по полученным ранее индексам
                  */
                 for (int iterator = 0; iterator < tempIndexList.length; iterator++) {
                     emplPersonListSalary =
@@ -217,8 +178,9 @@ public class EmplCompute {
                 /*
                  * Сравниваем среднюю зарплату комбинации сотрудников одного департамента
                  * с средней зарплатой сотрудников других департаментов
-                 * если > то вычитываем средние суммы при переводе
-                 * из одного отдела в другой
+                 * если > то вычисляем новую среднюю сумму зарплат в старом департаменте
+                 * без учета зарплат переводимых сотрудников
+                 * и прибавляем их к суммам зарплат нового департамента
                  * иначе продолжаем итерацию, если таких не найдено
                  */
                 Iterator<Map.Entry<String, Departments>> deptIterInner =
@@ -227,8 +189,7 @@ public class EmplCompute {
                     Departments deptsInner = deptIterInner.next().getValue();
                     if (!depts.getDptName().equals(deptsInner.getDptName())) {
                         if (avgEmplPersonListSalary.compareTo(deptsInner.getAvgSalary()) > 0) {
-
-
+                            //Полученную строку отправляем на подготовку к форматироавнию
                             tableFormatter.addStroke(new Object[] {
                                     tmpEmplArray.stream().map(n->Integer.toString(n.getId()))
                                             .collect(Collectors.joining(", ")),
@@ -242,34 +203,6 @@ public class EmplCompute {
                                     depts.getTAvgSalary(emplPersonListSalary.negate(), tmpEmplArray.size()),
                                     deptsInner.getAvgSalary(),
                                     depts.getAvgSalary()});
-
-                            /*
-                            tmpArray.add(//String.format(getMainTableFormatter(),
-                                    tmpEmplArray.stream().map(n->Integer.toString(n.getId()))
-                                            .collect(Collectors.joining(", ")) + " | "  +
-                                    tmpEmplArray.stream().map(EmplPerson::getLastName)
-                                            .collect(Collectors.joining(", ")) + " | "  +
-                                    tmpEmplArray.stream().map(n->n.getSalary().toString())
-                                            .collect(Collectors.joining(", ")) + " | "  +
-                                    deptsInner.getDptName() + " | "  +
-                                    depts.getDptName() + " | "  +
-                                    deptsInner.getTAvgSalary(emplPersonListSalary, tmpEmplArray.size()) + " | "  +
-                                    depts.getTAvgSalary(emplPersonListSalary.negate(), tmpEmplArray.size())+ " | "   +
-                                    deptsInner.getAvgSalary() + " | "  +
-                                    depts.getAvgSalary());*/
-                            /*tmpArray.add(String.format(getMainTableFormatter(),
-                                    tmpEmplArray.stream().map(n->Integer.toString(n.getId()))
-                                            .collect(Collectors.joining(", ")),
-                                            tmpEmplArray.stream().map(EmplPerson::getLastName)
-                                                    .collect(Collectors.joining(", ")),
-                                            tmpEmplArray.stream().map(n->n.getSalary().toString())
-                                                    .collect(Collectors.joining(", ")),
-                                            deptsInner.getDptName(),
-                                            depts.getDptName(),
-                                            deptsInner.getTAvgSalary(emplPersonListSalary, tmpEmplArray.size()),
-                                            depts.getTAvgSalary(emplPersonListSalary.negate(), tmpEmplArray.size()),
-                                            deptsInner.getAvgSalary(),
-                                            depts.getAvgSalary()));*/
                         }
                     }
                 }
@@ -279,12 +212,26 @@ public class EmplCompute {
         //Если были найдены сотрудники, записываем полученный массив данных в выходной файл
         if(!tableFormatter.isEmpty()) {
             try {
-                tmpArray.add("All departments average salary:");
-                tmpArray.add("");
-                tmpArray.add(String.format(getFormatter(), tabsDepartments));
-                departments.forEach((k,v) -> tmpArray.add(String.format(getFormatter(), v.getDptName(), v.getAvgSalary())));
-                tmpArray.add(0, String.format(getMainTableFormatter(), tabs));
-                Files.write(Paths.get(outputFile), tableFormatter.getTable(), Charset.defaultCharset());
+
+                TableFormatter departmentsFormatter  = new TableFormatter(tabsDepartments, TableFormatter.NOSPACES);
+                Iterator<Departments> departmentsIterator = departments.values().iterator();
+                while (departmentsIterator.hasNext()) {
+                    Departments tmpDepartment = departmentsIterator.next();
+                    departmentsFormatter.addStroke(
+                            new Object[]{tmpDepartment.getDptName(), tmpDepartment.getAvgSalary()});
+                }
+
+                /*
+                 * Запись таблиц в файл в зависимости от выбранного режима
+                 */
+                if(tableMode.equals(SINGLE_TABLE)) {
+                    Files.write(Paths.get(outputFile), tableFormatter.getTable(),
+                            Charset.defaultCharset());
+                } else {
+                    Files.write(Paths.get(outputFile), tableFormatter.addTable(departmentsFormatter),
+                            Charset.defaultCharset());
+                }
+
             }
             catch (Exception e) {
                 e.printStackTrace();

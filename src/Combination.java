@@ -7,7 +7,14 @@ public class Combination {
     private List<int[]> indexList = new LinkedList<>();
 
     /**
-     * Получение размера сочетаниемого массива
+     * Вывод списка комбинаций
+     */
+    public void printCombination() {
+        indexList.forEach(n-> System.out.println(Arrays.toString(n)));
+    }
+
+    /**
+     * Вызов поиска комбинаций элементов массива
      * @param size размер
      * @return список индексов элементов (комбинаторное сочетание)
      */
@@ -15,7 +22,6 @@ public class Combination {
         for(int i = 1; i <= size; i++) {
             doCombination(size, i);
         }
-        //subsets.forEach(n-> System.out.println(Arrays.toString(n)));
         return indexList;
     }
 
@@ -28,11 +34,12 @@ public class Combination {
 
         if (k <= size) {
 
+            //Начальные сочетания (копия входного массива)
             for (int i = 0; (s[i] = i) < k - 1; i++);
             indexList.add(getSubset(s));
 
-            //Поиск сочетаний
-            for(;;) {
+            //Поиск остальных сочетаний
+            while (true) {
                 int i;
 
                 for (i = k - 1; i >= 0 && s[i] == size - k + i; i--);
@@ -48,7 +55,11 @@ public class Combination {
         }
     }
 
-
+    /**
+     * Копирования массива
+     * @param subset входной массив
+     * @return копия массива
+     */
     private static int[] getSubset(int[] subset) {
         return Arrays.copyOf(subset, subset.length);
     }

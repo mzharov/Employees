@@ -1,24 +1,18 @@
 empl_id      empl_name                     empl_salary              new_dept      prev_dept           new_dept_avg      prev_dept_avg      new_dept_old_avg      prev_dept_old_avg
-
 4            Hodorkovski                   42000                    Cleaning      HR                         41400              62333                 41250                  57250
-
 9            Kim                           47000                    Cleaning      HR                         42400              60667                 41250                  57250
-
 4, 9         Hodorkovski, Kim              42000, 47000             Cleaning      HR                         42333              70000                 41250                  57250
-
 0            Ivanov                        43000                    Cleaning      IT                         41600              93250                 41250                  83200
-
 5            Lyapunov                      62000                    Cleaning      IT                         45400              88500                 41250                  83200
-
 5            Lyapunov                      62000                    HR            IT                         58200              88500                 57250                  83200
-
 6            Volkov                        43000                    Cleaning      IT                         41600              93250                 41250                  83200
-
 0, 5         Ivanov, Lyapunov              43000, 62000             Cleaning      IT                         45000             103667                 41250                  83200
-
 0, 6         Ivanov, Volkov                43000, 43000             Cleaning      IT                         41833             110000                 41250                  83200
-
 5, 6         Lyapunov, Volkov              62000, 43000             Cleaning      IT                         45000             103667                 41250                  83200
-
 0, 5, 6      Ivanov, Lyapunov, Volkov      43000, 62000, 43000      Cleaning      IT                         44714             134000                 41250                  83200
 
+
+department_name           avg_salary
+Cleaning                       41250
+HR                             57250
+IT                             83200

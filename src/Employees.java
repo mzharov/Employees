@@ -33,7 +33,9 @@ public class Employees {
                  * Вывод списка строк с ошибками
                  */
                 if((empl.getErrorSet().size() > 0)) {
-                    System.out.println("В данных строках файла " + empl.getInputFile() + " были обнаружены ошибки и они не были считаны:");
+                    System.out.println("В данных строках файла "
+                            + empl.getInputFile()
+                            + " были обнаружены ошибки и они не были считаны:");
                     empl.getErrorSet().forEach(e->System.out.print(e + " "));
                     System.out.println();
                 }
@@ -41,7 +43,7 @@ public class Employees {
                 /*
                  * Отслеживаем состояние поиска и записи в файл
                  */
-                int transCondition = empl.computeTransactions();
+                int transCondition = empl.computeTransactions(EmplCompute.MULTIPLE_TABLE);
                 switch (transCondition) {
                     case -2: {
                         System.out.println("Нет сотрудников удовлетворяющих условиям");

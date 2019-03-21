@@ -10,6 +10,9 @@ public class Departments {
     private String dptName;
     private BigDecimal allSalaries;
     private List<EmplPerson> emplPersons = new LinkedList<>();
+    /**
+     * Режим округления BigDecimal
+     */
     public static final RoundingMode ROUNDING_MODE = RoundingMode.HALF_UP;
 
     public Departments(String dptName) {
