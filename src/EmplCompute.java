@@ -18,6 +18,11 @@ public class EmplCompute {
     private List<EmplPerson> emplPersons = new LinkedList<>();
     private Map<String, Departments> departments = new ConcurrentHashMap<>();
     private List<Integer> errorSet = new LinkedList<>();
+
+
+    /**
+     * Режимы добалнеия таблиц в выходной файл
+     */
     public static  final String SINGLE_TABLE = "table"; //Запись в файл только основной таблицы
     public static  final String MULTIPLE_TABLE = "m_table"; //запись в файл основной таблицы и таблицы департаментов
 
@@ -44,7 +49,6 @@ public class EmplCompute {
 
     /**
      * Считывание данных из файла и сохранение в ArrayList
-     *
      * @return -2 данные не были найдены; -1 - ошибка чтения; 0 - файл не найден;  1 - файл прочитан;
      */
     public int readFile() {
@@ -118,7 +122,7 @@ public class EmplCompute {
 
     /**
      * Находим сотрудников, которые удовлетворяют условию
-     *
+     * @param tableMode режим форматирования таблицы (одна или две в выходном файле)
      * @return -2 - нет сотрудников удовлетворяющим условию; -1 - ошибка в ходе записи; 1 - данные успешно записаны в файл
      */
     public int computeTransactions(String tableMode) {
