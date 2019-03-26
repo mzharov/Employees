@@ -15,7 +15,6 @@ public class EmplCompute {
 
     private String inputFile;
     private String outputFile;
-    private List<EmplPerson> emplPersons = new LinkedList<>();
     private Map<String, Departments> departments = new ConcurrentHashMap<>();
     private List<Integer> errorSet = new LinkedList<>();
 
@@ -31,6 +30,10 @@ public class EmplCompute {
             "new_dept_old_avg", "prev_dept_old_avg"};
     private final String[] tabsDepartments = {"department_name", "avg_salary"};
 
+    public static final int NO_DATA = -2;
+    public static final int IO_EXCEPTION = -1;
+    public static final int FILE_NOT_FOUND = 0;
+    public static final int SUCCESS = 1;
 
     EmplCompute(String inputFile, String outputFile) {
         this.inputFile = inputFile;
@@ -55,16 +58,13 @@ public class EmplCompute {
         int errorIterator = 0;
 
         try (BufferedReader br = new BufferedReader(new FileReader(inputFile))) {
-            String line = "";
+            String line;
 
             while ((line = br.readLine()) != null) {
                 //String[] tmp = line.split(";");
                 ++errorIterator;
                 if (InputLineFormatter.checkFileLine(line)) {
                     String[] tmp = InputLineFormatter.trimArray(line);
-                    emplPersons.add(new EmplPerson(Integer.parseInt(tmp[0]),
-                            tmp[1],
-                            new BigDecimal(tmp[3])));
 
                     if (departments.containsKey(tmp[2])) {
                         /*
@@ -107,19 +107,6 @@ public class EmplCompute {
     }
 
 
-    public void printFile() {
-        emplPersons.forEach(n -> System.out.println(n.toString()));
-    }
-
-
-    /**
-     * Выводим список департаментов
-     */
-
-    public void printDepartments() {
-        departments.forEach((k, v) -> System.out.println(v.toString()));
-    }
-
     /**
      * Находим сотрудников, которые удовлетворяют условию
      * @param tableMode режим форматирования таблицы (одна или две в выходном файле)
@@ -130,12 +117,10 @@ public class EmplCompute {
          * Объект для форматирования таблицы вывода
          * в качестве параметра передается заголовок таблицы
          */
-        TableFormatter tableFormatter = new TableFormatter(tabs, TableFormatter.NOSPACES);
+        TableFormatter tableFormatter = new TableFormatter(tabs, TableFormatter.NO_SPACES);
 
-        Iterator<Map.Entry<String, Departments>> deptIter =
-                departments.entrySet().iterator();
-        while (deptIter.hasNext()) {
-            Departments depts = deptIter.next().getValue();
+        for (Map.Entry<String, Departments> stringDepartmentsEntry : departments.entrySet()) {
+            Departments depts = stringDepartmentsEntry.getValue();
 
             //Проходим по всем сотрудникам и сравниваем их зарплату с средней зарплатой по департаменту
 
@@ -155,29 +140,27 @@ public class EmplCompute {
              */
 
             List<int[]> indexList = (new Combination()).process(emplPersonList.size());
-            Iterator<int[]> indexIterator = indexList.iterator();
 
-            while (indexIterator.hasNext()) {
+            for (int[] ints : indexList) {
                 BigDecimal emplPersonListSalary = new BigDecimal(0);
 
-                int[] tempIndexList = indexIterator.next();
                 List<EmplPerson> tmpEmplArray = new LinkedList<>();
 
                 /*
                  * Находим сумму зарплат комбинаций
                  * Формируем списки комбинаций по полученным ранее индексам
                  */
-                for (int iterator = 0; iterator < tempIndexList.length; iterator++) {
+                for (int i : ints) {
                     emplPersonListSalary =
-                            emplPersonListSalary.add(emplPersonList.get(tempIndexList[iterator]).getSalary());
-                    tmpEmplArray.add(emplPersonList.get(tempIndexList[iterator]));
+                            emplPersonListSalary.add(emplPersonList.get(i).getSalary());
+                    tmpEmplArray.add(emplPersonList.get(i));
                 }
 
                 /*
                  * Находим среднюю сумму комбинации
                  */
                 BigDecimal avgEmplPersonListSalary = emplPersonListSalary
-                        .divide(new BigDecimal(tempIndexList.length), Departments.ROUNDING_MODE);
+                        .divide(new BigDecimal(ints.length), Departments.ROUNDING_MODE);
 
                 /*
                  * Сравниваем среднюю зарплату комбинации сотрудников одного департамента
@@ -187,19 +170,17 @@ public class EmplCompute {
                  * и прибавляем их к суммам зарплат нового департамента
                  * иначе продолжаем итерацию, если таких не найдено
                  */
-                Iterator<Map.Entry<String, Departments>> deptIterInner =
-                        departments.entrySet().iterator();
-                while (deptIterInner.hasNext()) {
-                    Departments deptsInner = deptIterInner.next().getValue();
+                for (Map.Entry<String, Departments> stringDepartmentsEntry1 : departments.entrySet()) {
+                    Departments deptsInner = stringDepartmentsEntry1.getValue();
                     if (!depts.getDptName().equals(deptsInner.getDptName())) {
                         if (avgEmplPersonListSalary.compareTo(deptsInner.getAvgSalary()) > 0) {
                             //Полученную строку отправляем на подготовку к форматироавнию
-                            tableFormatter.addStroke(new Object[] {
-                                    tmpEmplArray.stream().map(n->Integer.toString(n.getId()))
+                            tableFormatter.addStroke(new Object[]{
+                                    tmpEmplArray.stream().map(n -> Integer.toString(n.getId()))
                                             .collect(Collectors.joining(", ")),
                                     tmpEmplArray.stream().map(EmplPerson::getLastName)
                                             .collect(Collectors.joining(", ")),
-                                    tmpEmplArray.stream().map(n->n.getSalary().toString())
+                                    tmpEmplArray.stream().map(n -> n.getSalary().toString())
                                             .collect(Collectors.joining(", ")),
                                     deptsInner.getDptName(),
                                     depts.getDptName(),
@@ -217,10 +198,8 @@ public class EmplCompute {
         if(!tableFormatter.isEmpty()) {
             try {
 
-                TableFormatter departmentsFormatter  = new TableFormatter(tabsDepartments, TableFormatter.NOSPACES);
-                Iterator<Departments> departmentsIterator = departments.values().iterator();
-                while (departmentsIterator.hasNext()) {
-                    Departments tmpDepartment = departmentsIterator.next();
+                TableFormatter departmentsFormatter  = new TableFormatter(tabsDepartments, TableFormatter.NO_SPACES);
+                for (Departments tmpDepartment : departments.values()) {
                     departmentsFormatter.addStroke(
                             new Object[]{tmpDepartment.getDptName(), tmpDepartment.getAvgSalary()});
                 }
@@ -237,7 +216,7 @@ public class EmplCompute {
                 }
 
             }
-            catch (Exception e) {
+            catch (IOException e) {
                 e.printStackTrace();
                 return -1;
             }

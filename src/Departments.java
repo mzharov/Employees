@@ -58,16 +58,10 @@ public class Departments {
         }
         return tAvgSalary;
     }
-    private BigDecimal computeTransactionAvgSalary(BigDecimal newEmplSalary) {
-        return computeTransactionAvgSalary(newEmplSalary, 1);
-    }
 
     public String getDptName() {return dptName;}
     public BigDecimal getAvgSalary() {return computeAvgSalary();}
     public List<EmplPerson> getEmployeesList() {return emplPersons;}
-    public BigDecimal getTAvgSalary(BigDecimal newEmplSalary) {
-        return computeTransactionAvgSalary(newEmplSalary);
-    }
     public BigDecimal getTAvgSalary(BigDecimal newEmplSalary, int size) {
         return computeTransactionAvgSalary(newEmplSalary, size);
     }

@@ -17,22 +17,22 @@ public class Employees {
          */
 
         switch (empl.readFile()) {
-            case -2: {
+            case EmplCompute.NO_DATA: {
                 System.out.println("В файле "
                         + empl.getInputFile()
                         + " не были найдены необходимые данные.");
                 break;
             }
-            case -1: {
+            case EmplCompute.IO_EXCEPTION: {
                 System.out.println("Ошибка в ходе чтения файла "
                         + empl.getInputFile());
                 break;
             }
-            case 0: {
+            case EmplCompute.FILE_NOT_FOUND: {
                 System.out.println("Файл " + empl.getInputFile()
                         + " не найден.");
             }
-            case 1: {
+            case EmplCompute.SUCCESS: {
                 /*
                  * Вывод списка строк с ошибками
                  */
@@ -48,15 +48,15 @@ public class Employees {
                  * Отслеживаем состояние поиска и записи в файл
                  */
                 switch (empl.computeTransactions(EmplCompute.MULTIPLE_TABLE)) {
-                    case -2: {
+                    case EmplCompute.NO_DATA: {
                         System.out.println("Нет сотрудников удовлетворяющих условиям");
                         break;
                     }
-                    case -1: {
+                    case EmplCompute.IO_EXCEPTION :{
                         System.out.println("Ошибка в ходе записи в файл");
                         break;
                     }
-                    case 1: {
+                    case EmplCompute.SUCCESS: {
                         System.out.println("Данные успешно записаны в файл "
                                 + empl.getOutputFile());
                         break;

@@ -1,5 +1,4 @@
 import java.math.BigDecimal;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,7 +12,7 @@ public class TableFormatter {
     /**
      * Режимы форматирования таблицы
      */
-    public static final String NOSPACES = "no_space"; //форматирование с отступами
+    public static final String NO_SPACES = "no_space"; //форматирование с отступами
     public static final String SPACES = "space"; //форматирование без отступов
 
     private boolean spaces;
@@ -119,9 +118,8 @@ public class TableFormatter {
      */
     public List<String> getTable() {
         List<String> finalTable = new LinkedList<>();
-        Iterator<Object[]> sIterator = sTable.iterator();
-        while (sIterator.hasNext()) {
-            finalTable.add(formatString(sIterator.next()));
+        for (Object[] objects : sTable) {
+            finalTable.add(formatString(objects));
         }
         return finalTable;
     }

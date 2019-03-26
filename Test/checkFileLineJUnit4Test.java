@@ -24,7 +24,7 @@ public class checkFileLineJUnit4Test extends Assert{
          *Неправильные входные данные
          */
         assertFalse(InputLineFormatter.checkFileLine(";0;Ivanov;IT;12000"));
-        assertFalse(InputLineFormatter.checkFileLine("0;Ivanov;IT;0;"));;
+        assertFalse(InputLineFormatter.checkFileLine("0;Ivanov;IT;0;"));
         assertFalse(InputLineFormatter.checkFileLine("h;Ivanov;IT;43000"));
         assertFalse(InputLineFormatter.checkFileLine(""));
         assertFalse(InputLineFormatter.checkFileLine("0;Ivanov;IT;43000;122"));

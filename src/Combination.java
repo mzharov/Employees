@@ -4,14 +4,7 @@ import java.util.List;
 
 public class Combination {
 
-    private List<int[]> indexList = new LinkedList<>();
-
-    /**
-     * Вывод списка комбинаций
-     */
-    public void printCombination() {
-        indexList.forEach(n-> System.out.println(Arrays.toString(n)));
-    }
+    private final List<int[]> indexList = new LinkedList<>();
 
     /**
      * Вызов поиска комбинаций элементов массива
@@ -35,14 +28,19 @@ public class Combination {
         if (k <= size) {
 
             //Начальные сочетания (копия входного массива)
-            for (int i = 0; (s[i] = i) < k - 1; i++);
+            for (int i = 0; i < k - 1; i++) {
+                s[i] = i;
+            }
+
             indexList.add(getSubset(s));
 
             //Поиск остальных сочетаний
             while (true) {
                 int i;
 
-                for (i = k - 1; i >= 0 && s[i] == size - k + i; i--);
+                for (i = k - 1; i >= 0 && i == size - k + i; i--) {
+                    s[i] = size - k + i;
+                }
                 if (i < 0) {
                     break;
                 }
